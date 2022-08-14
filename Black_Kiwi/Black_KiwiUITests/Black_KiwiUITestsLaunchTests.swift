@@ -1,13 +1,13 @@
 //
-//  Progetto_CAS_ApplicationUITestsLaunchTests.swift
-//  Progetto_CAS_ApplicationUITests
+//  Black_KiwiUITestsLaunchTests.swift
+//  Black_KiwiUITests
 //
-//  Created by Alessandro Benetton on 24/07/22.
+//  Created by Alessandro Benetton on 14/08/22.
 //
 
 import XCTest
 
-class Progetto_CAS_ApplicationUITestsLaunchTests: XCTestCase {
+class Black_KiwiUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

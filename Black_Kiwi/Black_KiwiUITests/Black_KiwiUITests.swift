@@ -1,13 +1,13 @@
 //
-//  Progetto_CAS_ApplicationUITests.swift
-//  Progetto_CAS_ApplicationUITests
+//  Black_KiwiUITests.swift
+//  Black_KiwiUITests
 //
-//  Created by Alessandro Benetton on 24/07/22.
+//  Created by Alessandro Benetton on 14/08/22.
 //
 
 import XCTest
 
-class Progetto_CAS_ApplicationUITests: XCTestCase {
+class Black_KiwiUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
