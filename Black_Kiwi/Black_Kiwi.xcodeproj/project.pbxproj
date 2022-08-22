@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFCEB05028B3DAD500369F39 /* Drawer */; };
 		FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */; };
 		FFF1B7DD28A8E799002DD26D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF1B7DC28A8E799002DD26D /* Assets.xcassets */; };
 		FFF1B7E028A8E799002DD26D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF1B7DF28A8E799002DD26D /* Preview Assets.xcassets */; };
@@ -71,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFF1B82128A8E9FC002DD26D /* Drawer in Frameworks */,
+				FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +224,7 @@
 			name = Black_Kiwi;
 			packageProductDependencies = (
 				FFF1B82028A8E9FC002DD26D /* Drawer */,
+				FFCEB05028B3DAD500369F39 /* Drawer */,
 			);
 			productName = Black_Kiwi;
 			productReference = FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */;
@@ -297,6 +300,7 @@
 			mainGroup = FFF1B7CC28A8E797002DD26D;
 			packageReferences = (
 				FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
+				FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
 			);
 			productRefGroup = FFF1B7D628A8E797002DD26D /* Products */;
 			projectDirPath = "";
@@ -677,6 +681,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maustinstar/swiftui-drawer";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maustinstar/swiftui-drawer";
@@ -688,6 +700,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FFCEB05028B3DAD500369F39 /* Drawer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
+			productName = Drawer;
+		};
 		FFF1B82028A8E9FC002DD26D /* Drawer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */;

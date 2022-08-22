@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/maustinstar/swiftui-drawer",
       "state" : {
-        "revision" : "e18f1f44dc716d99d9a147a47d8507eebbfa8e4c",
-        "version" : "0.1.0"
+        "branch" : "master",
+        "revision" : "6d22f5c1362bfa71f2915c28aebba343b9243363"
       }
     }
   ],
