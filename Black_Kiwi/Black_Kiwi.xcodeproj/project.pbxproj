@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF217D2028BA69FC001DE287 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF217D1F28BA69FC001DE287 /* MapView.swift */; };
 		FF217D2328BA6A4C001DE287 /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = FF217D2228BA6A4C001DE287 /* Map */; };
 		FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFCEB05028B3DAD500369F39 /* Drawer */; };
 		FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */; };
@@ -20,7 +19,7 @@
 		FFF1B80828A8E865002DD26D /* POIDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80728A8E865002DD26D /* POIDetailView.swift */; };
 		FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80928A8E883002DD26D /* ListView.swift */; };
 		FFF1B80C28A8E89E002DD26D /* ListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80B28A8E89E002DD26D /* ListElementView.swift */; };
-		FFF1B80F28A8E8C4002DD26D /* MapViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80E28A8E8C4002DD26D /* MapViewOld.swift */; };
+		FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80E28A8E8C4002DD26D /* MapView.swift */; };
 		FFF1B81228A8E8E9002DD26D /* MapComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81128A8E8E9002DD26D /* MapComponentView.swift */; };
 		FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81728A8E925002DD26D /* DrawerContentView.swift */; };
 		FFF1B81A28A8E935002DD26D /* SearchBarComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81928A8E935002DD26D /* SearchBarComponentView.swift */; };
@@ -47,7 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FF217D1F28BA69FC001DE287 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Black_Kiwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiApp.swift; sourceTree = "<group>"; };
 		FFF1B7DC28A8E799002DD26D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,7 +59,7 @@
 		FFF1B80728A8E865002DD26D /* POIDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetailView.swift; sourceTree = "<group>"; };
 		FFF1B80928A8E883002DD26D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		FFF1B80B28A8E89E002DD26D /* ListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementView.swift; sourceTree = "<group>"; };
-		FFF1B80E28A8E8C4002DD26D /* MapViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewOld.swift; sourceTree = "<group>"; };
+		FFF1B80E28A8E8C4002DD26D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FFF1B81128A8E8E9002DD26D /* MapComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponentView.swift; sourceTree = "<group>"; };
 		FFF1B81728A8E925002DD26D /* DrawerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContentView.swift; sourceTree = "<group>"; };
 		FFF1B81928A8E935002DD26D /* SearchBarComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarComponentView.swift; sourceTree = "<group>"; };
@@ -187,8 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				FFF1B81028A8E8DA002DD26D /* MapComponents */,
-				FFF1B80E28A8E8C4002DD26D /* MapViewOld.swift */,
-				FF217D1F28BA69FC001DE287 /* MapView.swift */,
+				FFF1B80E28A8E8C4002DD26D /* MapView.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -352,8 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */,
-				FF217D2028BA69FC001DE287 /* MapView.swift in Sources */,
-				FFF1B80F28A8E8C4002DD26D /* MapViewOld.swift in Sources */,
+				FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */,
 				FFF1B81A28A8E935002DD26D /* SearchBarComponentView.swift in Sources */,
 				FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */,
 				FFF1B80C28A8E89E002DD26D /* ListElementView.swift in Sources */,

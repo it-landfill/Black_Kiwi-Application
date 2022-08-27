@@ -23,7 +23,7 @@ struct ListElementView: View {
             }
             Spacer()
             VStack {
-                Text(POI.name)
+                Text(POI.title!)
                     .font(.headline)
                 .multilineTextAlignment(.center)
             Text("rank: \(POI.rank, specifier: "%.1f")")
