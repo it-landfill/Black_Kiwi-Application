@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import SwiftUI
+import MapKit
 
 struct POIModel {
     struct Category: Identifiable {
@@ -26,14 +27,29 @@ struct POIModel {
         case department
     }
     
-    struct Item: Identifiable {
-        let id = UUID()
-        var name: String
+    class Item: NSObject, Identifiable, MKAnnotation {
+        let id: UUID
+        var title: String?
         var category: CategoryTypes
         var coordinate: CLLocationCoordinate2D
         var distance: Float = 0.0
         var rank: Float
-        var quartiere: String = ""
+        
+        init(
+            name: String,
+            category: CategoryTypes,
+            coordinate: CLLocationCoordinate2D,
+            rank: Float
+        ){
+            self.id = UUID()
+            self.title = name
+            self.category = category
+            self.coordinate = coordinate
+            self.distance = 0.0
+            self.rank = rank
+            
+            super.init()
+        }
     }
 }
 
@@ -75,10 +91,10 @@ extension POIModel.Item {
 
 extension POIModel {
     static let categoriesStructs: [POIModel.Category] = [
-        Category(id: 0, name: "Historical Building", type: POIModel.CategoryTypes.historical_building, color: Color.purple, icon: "questionmark.circle.fill"),
+        Category(id: 0, name: "Historical Building", type: POIModel.CategoryTypes.historical_building, color: Color.purple, icon: "building.columns.circle.fill"),
         Category(id: 1, name: "Park",  type: POIModel.CategoryTypes.park, color: Color.green, icon: "leaf.circle.fill"),
         Category(id: 2, name: "Theater",  type: POIModel.CategoryTypes.theater, color: Color.red, icon: "theatermasks.circle.fill"),
-        Category(id: 3, name: "Museum",  type: POIModel.CategoryTypes.museum, color: Color.blue, icon: "questionmark.circle.fill"),
+        Category(id: 3, name: "Museum",  type: POIModel.CategoryTypes.museum, color: Color.blue, icon: "building.2.crop.circle.fill"),
         Category(id: 4, name: "Department",  type: POIModel.CategoryTypes.department, color: Color.black, icon: "book.circle.fill")
     ]
 }

@@ -36,11 +36,6 @@ struct POIDetailView: View {
                         Text("\(POI.distance, specifier: "%.1f") Km")
                     }
                     HStack{
-                        Text("Quartiere")
-                        Spacer()
-                        Text(POI.quartiere)
-                    }
-                    HStack{
                         Text("Rank")
                         Spacer()
                         Text("\(POI.rank, specifier: "%.1f")")
@@ -48,7 +43,7 @@ struct POIDetailView: View {
                 }
             }
         }
-        .navigationTitle(POI.name)
+        .navigationTitle(POI.title!)
     }
     
     private func setRegion(_ coordinate: CLLocationCoordinate2D) {
