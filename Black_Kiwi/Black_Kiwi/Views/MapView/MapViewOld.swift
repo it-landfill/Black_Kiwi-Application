@@ -2,25 +2,22 @@
 //  MapView.swift
 //  Black_Kiwi
 //
-//  Created by Alessandro Benetton on 27/08/22.
+//  Created by Alessandro Benetton on 14/08/22.
 //
 
 import SwiftUI
-import Map
+import MapKit
 import Drawer
 
-struct MapView: View {
+struct MapViewOld: View {
     
-    @State private var region = MapModel.defaultMapRegion
-    @State private var restHeights = [30, UIScreen.main.bounds.height - 150]
+    @State private var restHeights = [30, 200, UIScreen.main.bounds.height - 200]
     
     var body: some View {
-        ZStack{
-            Map(
-                coordinateRegion: $region,
-                pointOfInterestFilter: .excludingAll //TODO: Open ticket for compass visibility
-            )
-            .edgesIgnoringSafeArea(.all)
+        ZStack {
+            UIMapView()
+                .edgesIgnoringSafeArea(.all)
+            
             
             //Button components
             //TODO: Move to component view
@@ -53,13 +50,14 @@ struct MapView: View {
                 DrawerContentView(restHeights: $restHeights)
             }
             .rest(at: $restHeights)
+            
         }
     }
 }
 
-struct MapView_Previews: PreviewProvider {
+struct MapViewOld_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
-            .previewDevice("iPhone 13 Pro")
+        MapViewOld()
+            .previewDevice("iPhone 13")
     }
 }
