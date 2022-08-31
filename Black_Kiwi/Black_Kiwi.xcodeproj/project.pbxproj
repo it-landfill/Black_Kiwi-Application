@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF217D2328BA6A4C001DE287 /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = FF217D2228BA6A4C001DE287 /* Map */; };
+		FF586A9328BF676200755E5A /* RequestPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF586A9228BF676200755E5A /* RequestPermissions.swift */; };
+		FF586A9628BF6B8C00755E5A /* PermissionsSwiftUILocation in Frameworks */ = {isa = PBXBuildFile; productRef = FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */; };
 		FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFCEB05028B3DAD500369F39 /* Drawer */; };
 		FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */; };
 		FFF1B7DD28A8E799002DD26D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF1B7DC28A8E799002DD26D /* Assets.xcassets */; };
@@ -20,12 +21,11 @@
 		FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80928A8E883002DD26D /* ListView.swift */; };
 		FFF1B80C28A8E89E002DD26D /* ListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80B28A8E89E002DD26D /* ListElementView.swift */; };
 		FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80E28A8E8C4002DD26D /* MapView.swift */; };
-		FFF1B81228A8E8E9002DD26D /* MapComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81128A8E8E9002DD26D /* MapComponentView.swift */; };
+		FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81128A8E8E9002DD26D /* UIMapView.swift */; };
 		FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81728A8E925002DD26D /* DrawerContentView.swift */; };
 		FFF1B81A28A8E935002DD26D /* SearchBarComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81928A8E935002DD26D /* SearchBarComponentView.swift */; };
 		FFF1B81C28A8E955002DD26D /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81B28A8E955002DD26D /* MapModel.swift */; };
 		FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81D28A8E967002DD26D /* POIModel.swift */; };
-		FFF1B82128A8E9FC002DD26D /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFF1B82028A8E9FC002DD26D /* Drawer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF586A9228BF676200755E5A /* RequestPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPermissions.swift; sourceTree = "<group>"; };
 		FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Black_Kiwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiApp.swift; sourceTree = "<group>"; };
 		FFF1B7DC28A8E799002DD26D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +61,7 @@
 		FFF1B80928A8E883002DD26D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		FFF1B80B28A8E89E002DD26D /* ListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementView.swift; sourceTree = "<group>"; };
 		FFF1B80E28A8E8C4002DD26D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		FFF1B81128A8E8E9002DD26D /* MapComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponentView.swift; sourceTree = "<group>"; };
+		FFF1B81128A8E8E9002DD26D /* UIMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMapView.swift; sourceTree = "<group>"; };
 		FFF1B81728A8E925002DD26D /* DrawerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContentView.swift; sourceTree = "<group>"; };
 		FFF1B81928A8E935002DD26D /* SearchBarComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarComponentView.swift; sourceTree = "<group>"; };
 		FFF1B81B28A8E955002DD26D /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
@@ -72,8 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF217D2328BA6A4C001DE287 /* Map in Frameworks */,
-				FFF1B82128A8E9FC002DD26D /* Drawer in Frameworks */,
+				FF586A9628BF6B8C00755E5A /* PermissionsSwiftUILocation in Frameworks */,
 				FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +186,7 @@
 			children = (
 				FFF1B81028A8E8DA002DD26D /* MapComponents */,
 				FFF1B80E28A8E8C4002DD26D /* MapView.swift */,
+				FF586A9228BF676200755E5A /* RequestPermissions.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -194,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				FFF1B81328A8E8FB002DD26D /* DrawerComponents */,
-				FFF1B81128A8E8E9002DD26D /* MapComponentView.swift */,
+				FFF1B81128A8E8E9002DD26D /* UIMapView.swift */,
 			);
 			path = MapComponents;
 			sourceTree = "<group>";
@@ -225,9 +226,8 @@
 			);
 			name = Black_Kiwi;
 			packageProductDependencies = (
-				FFF1B82028A8E9FC002DD26D /* Drawer */,
 				FFCEB05028B3DAD500369F39 /* Drawer */,
-				FF217D2228BA6A4C001DE287 /* Map */,
+				FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */,
 			);
 			productName = Black_Kiwi;
 			productReference = FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */;
@@ -302,9 +302,8 @@
 			);
 			mainGroup = FFF1B7CC28A8E797002DD26D;
 			packageReferences = (
-				FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
 				FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
-				FF217D2128BA6A4C001DE287 /* XCRemoteSwiftPackageReference "Map" */,
+				FF586A9428BF6B8C00755E5A /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
 			);
 			productRefGroup = FFF1B7D628A8E797002DD26D /* Products */;
 			projectDirPath = "";
@@ -348,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF586A9328BF676200755E5A /* RequestPermissions.swift in Sources */,
 				FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */,
 				FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */,
 				FFF1B81A28A8E935002DD26D /* SearchBarComponentView.swift in Sources */,
@@ -356,7 +356,7 @@
 				FFF1B80828A8E865002DD26D /* POIDetailView.swift in Sources */,
 				FFF1B81C28A8E955002DD26D /* MapModel.swift in Sources */,
 				FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */,
-				FFF1B81228A8E8E9002DD26D /* MapComponentView.swift in Sources */,
+				FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */,
 				FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */,
 				FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */,
 			);
@@ -520,6 +520,7 @@
 				DEVELOPMENT_TEAM = DPA9YH62YZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Location access is needed in order to show user location and provide nearby recommendations.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -549,6 +550,7 @@
 				DEVELOPMENT_TEAM = DPA9YH62YZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Location access is needed in order to show user location and provide nearby recommendations.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -685,12 +687,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FF217D2128BA6A4C001DE287 /* XCRemoteSwiftPackageReference "Map" */ = {
+		FF586A9428BF6B8C00755E5A /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pauljohanneskraft/Map";
+			repositoryURL = "https://github.com/jevonmao/PermissionsSwiftUI";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
 			};
 		};
 		FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
@@ -701,30 +703,17 @@
 				kind = branch;
 			};
 		};
-		FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/maustinstar/swiftui-drawer";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FF217D2228BA6A4C001DE287 /* Map */ = {
+		FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FF217D2128BA6A4C001DE287 /* XCRemoteSwiftPackageReference "Map" */;
-			productName = Map;
+			package = FF586A9428BF6B8C00755E5A /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
+			productName = PermissionsSwiftUILocation;
 		};
 		FFCEB05028B3DAD500369F39 /* Drawer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
-			productName = Drawer;
-		};
-		FFF1B82028A8E9FC002DD26D /* Drawer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
 			productName = Drawer;
 		};
 /* End XCSwiftPackageProductDependency section */

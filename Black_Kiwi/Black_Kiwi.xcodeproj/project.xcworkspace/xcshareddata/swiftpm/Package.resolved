@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "map",
+      "identity" : "permissionsswiftui",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pauljohanneskraft/Map",
+      "location" : "https://github.com/jevonmao/PermissionsSwiftUI",
       "state" : {
-        "branch" : "main",
-        "revision" : "3dbb081d903b46f64fa7149d93b848861a5cf66a"
+        "revision" : "8b0b2e6b4ddf52d0d41f5f7b06e139f498f84e6b",
+        "version" : "1.5.6"
       }
     },
     {
@@ -16,6 +16,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "6d22f5c1362bfa71f2915c28aebba343b9243363"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect",
+      "state" : {
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
       }
     }
   ],
