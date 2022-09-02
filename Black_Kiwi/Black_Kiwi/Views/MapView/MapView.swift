@@ -13,11 +13,18 @@ struct MapView: View {
     
     @State private var restHeights = [30, 200, UIScreen.main.bounds.height - 200]
     @State private var POIList: [POIModel.Item] = POIModel.Item.sampleData
+    @State private var showPermissionPopup = false
+    @State private var locationStatus = false
+    
+    private var locationManager = LocationManager()
     
     var body: some View {
         ZStack {
-            UIMapView(POIList: $POIList)
+            UIMapView()
                 .edgesIgnoringSafeArea(.all)
+                .onAppear(perform: {
+                    //uiMapView.updatePOIs(POIList: POIList)
+                })
             
             
             //Button components
@@ -32,9 +39,25 @@ struct MapView: View {
                         }
                         .padding(13)
                         
-                        Button(action: {}){
-                            Image(systemName: "location")
-                                .foregroundColor(.gray)
+                        Button(action: {
+                            locationStatus = !locationStatus
+                            if(locationStatus){
+                                showPermissionPopup = true
+                                locationManager.checkIfLocationServicesIsEnabled()
+                                LocationManager.startUpdatingLocation()
+                                if let location = LocationManager.getLocation() {
+                                    print("Setting location")
+                                    UIMapView.centerOnPoint(point: location)
+                                }
+                            }
+                        }){
+                            if (locationStatus) {
+                                Image(systemName: "location")
+                                    .foregroundColor(.blue)
+                            } else {
+                                Image(systemName: "location")
+                                    .foregroundColor(.gray)
+                            }
                         }
                         .padding(13)
                     }
@@ -53,6 +76,8 @@ struct MapView: View {
             .rest(at: $restHeights)
             
         }
+        .JMAlert(showModal: $showPermissionPopup, for: [.location], autoDismiss: true)
+        .setPermissionComponent(for: .location, description: "Allow access to user location while using the app.")
     }
 }
 

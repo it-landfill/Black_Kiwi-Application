@@ -9,17 +9,15 @@ import SwiftUI
 import PermissionsSwiftUILocation
 
 struct RequestPermissions: View {
-       @State var showModal = true
-       var body: some View {
-           Button(action: {
-               showModal=true
-           }, label: {
-               Text("Ask user for permissions")
-           })
-           .JMAlert(showModal: $showModal, for: [.location], autoDismiss: true)
-           .setPermissionComponent(for: .location, description: "Allow access to user location while using the app.")
-       }
-   }
+    
+    @State var showModal = true
+    
+    var body: some View {
+        Text("")
+            .JMAlert(showModal: $showModal, for: [.location], autoDismiss: true)
+            .setPermissionComponent(for: .location, description: "Allow access to user location while using the app.")
+    }
+}
 
 struct RequestPermissions_Previews: PreviewProvider {
     static var previews: some View {

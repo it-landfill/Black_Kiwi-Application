@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		FF586A9328BF676200755E5A /* RequestPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF586A9228BF676200755E5A /* RequestPermissions.swift */; };
 		FF586A9628BF6B8C00755E5A /* PermissionsSwiftUILocation in Frameworks */ = {isa = PBXBuildFile; productRef = FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */; };
+		FF586A9828BF6FA100755E5A /* LocationManagerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF586A9728BF6FA100755E5A /* LocationManagerOld.swift */; };
+		FFB0646D28C0AC0C00283CF3 /* ViewPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0646C28C0AC0C00283CF3 /* ViewPosition.swift */; };
+		FFB0646F28C0B09400283CF3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0646E28C0B09400283CF3 /* LocationManager.swift */; };
 		FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFCEB05028B3DAD500369F39 /* Drawer */; };
 		FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */; };
 		FFF1B7DD28A8E799002DD26D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF1B7DC28A8E799002DD26D /* Assets.xcassets */; };
@@ -47,6 +50,9 @@
 
 /* Begin PBXFileReference section */
 		FF586A9228BF676200755E5A /* RequestPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPermissions.swift; sourceTree = "<group>"; };
+		FF586A9728BF6FA100755E5A /* LocationManagerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerOld.swift; sourceTree = "<group>"; };
+		FFB0646C28C0AC0C00283CF3 /* ViewPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPosition.swift; sourceTree = "<group>"; };
+		FFB0646E28C0B09400283CF3 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Black_Kiwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiApp.swift; sourceTree = "<group>"; };
 		FFF1B7DC28A8E799002DD26D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 			children = (
 				FFF1B81B28A8E955002DD26D /* MapModel.swift */,
 				FFF1B81D28A8E967002DD26D /* POIModel.swift */,
+				FF586A9728BF6FA100755E5A /* LocationManagerOld.swift */,
+				FFB0646E28C0B09400283CF3 /* LocationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,6 +195,7 @@
 				FFF1B81028A8E8DA002DD26D /* MapComponents */,
 				FFF1B80E28A8E8C4002DD26D /* MapView.swift */,
 				FF586A9228BF676200755E5A /* RequestPermissions.swift */,
+				FFB0646C28C0AC0C00283CF3 /* ViewPosition.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -349,6 +358,7 @@
 			files = (
 				FF586A9328BF676200755E5A /* RequestPermissions.swift in Sources */,
 				FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */,
+				FFB0646F28C0B09400283CF3 /* LocationManager.swift in Sources */,
 				FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */,
 				FFF1B81A28A8E935002DD26D /* SearchBarComponentView.swift in Sources */,
 				FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */,
@@ -359,6 +369,8 @@
 				FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */,
 				FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */,
 				FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */,
+				FF586A9828BF6FA100755E5A /* LocationManagerOld.swift in Sources */,
+				FFB0646D28C0AC0C00283CF3 /* ViewPosition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
