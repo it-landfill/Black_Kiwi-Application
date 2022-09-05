@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		FF586A9328BF676200755E5A /* RequestPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF586A9228BF676200755E5A /* RequestPermissions.swift */; };
 		FF586A9628BF6B8C00755E5A /* PermissionsSwiftUILocation in Frameworks */ = {isa = PBXBuildFile; productRef = FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */; };
-		FF586A9828BF6FA100755E5A /* LocationManagerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF586A9728BF6FA100755E5A /* LocationManagerOld.swift */; };
+		FF73FCAC28C5DED6005E7EC5 /* MapTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */; };
+		FF73FCAE28C5DF4E005E7EC5 /* LocationToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */; };
+		FF73FCB028C5E0E7005E7EC5 /* LocationModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */; };
 		FFB0646D28C0AC0C00283CF3 /* ViewPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0646C28C0AC0C00283CF3 /* ViewPosition.swift */; };
 		FFB0646F28C0B09400283CF3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0646E28C0B09400283CF3 /* LocationManager.swift */; };
 		FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFCEB05028B3DAD500369F39 /* Drawer */; };
@@ -50,7 +52,9 @@
 
 /* Begin PBXFileReference section */
 		FF586A9228BF676200755E5A /* RequestPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPermissions.swift; sourceTree = "<group>"; };
-		FF586A9728BF6FA100755E5A /* LocationManagerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerOld.swift; sourceTree = "<group>"; };
+		FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTypeButton.swift; sourceTree = "<group>"; };
+		FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationToggleButton.swift; sourceTree = "<group>"; };
+		FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModeButton.swift; sourceTree = "<group>"; };
 		FFB0646C28C0AC0C00283CF3 /* ViewPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPosition.swift; sourceTree = "<group>"; };
 		FFB0646E28C0B09400283CF3 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Black_Kiwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +105,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF73FCAA28C5DEBA005E7EC5 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */,
+				FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */,
+				FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		FFF1B7CC28A8E797002DD26D = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +187,6 @@
 			children = (
 				FFF1B81B28A8E955002DD26D /* MapModel.swift */,
 				FFF1B81D28A8E967002DD26D /* POIModel.swift */,
-				FF586A9728BF6FA100755E5A /* LocationManagerOld.swift */,
 				FFB0646E28C0B09400283CF3 /* LocationManager.swift */,
 			);
 			path = Models;
@@ -203,6 +216,7 @@
 		FFF1B81028A8E8DA002DD26D /* MapComponents */ = {
 			isa = PBXGroup;
 			children = (
+				FF73FCAA28C5DEBA005E7EC5 /* Buttons */,
 				FFF1B81328A8E8FB002DD26D /* DrawerComponents */,
 				FFF1B81128A8E8E9002DD26D /* UIMapView.swift */,
 			);
@@ -363,14 +377,16 @@
 				FFF1B81A28A8E935002DD26D /* SearchBarComponentView.swift in Sources */,
 				FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */,
 				FFF1B80C28A8E89E002DD26D /* ListElementView.swift in Sources */,
+				FF73FCAE28C5DF4E005E7EC5 /* LocationToggleButton.swift in Sources */,
+				FF73FCAC28C5DED6005E7EC5 /* MapTypeButton.swift in Sources */,
 				FFF1B80828A8E865002DD26D /* POIDetailView.swift in Sources */,
 				FFF1B81C28A8E955002DD26D /* MapModel.swift in Sources */,
 				FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */,
 				FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */,
 				FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */,
 				FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */,
-				FF586A9828BF6FA100755E5A /* LocationManagerOld.swift in Sources */,
 				FFB0646D28C0AC0C00283CF3 /* ViewPosition.swift in Sources */,
+				FF73FCB028C5E0E7005E7EC5 /* LocationModeButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,9 +64,10 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Centering region on user location")
-        let location = locations.last ?? CLLocation(latitude: MapModel.defaultMapCoordinates.latitude, longitude: MapModel.defaultMapCoordinates.longitude)
-        UIMapView.centerOnPoint(point: location.coordinate)
+        print("Auto centering map on user")
+        if let location = locations.last {
+            UIMapView.centerOnPoint(point: location.coordinate)
+        }
     }
 }
 

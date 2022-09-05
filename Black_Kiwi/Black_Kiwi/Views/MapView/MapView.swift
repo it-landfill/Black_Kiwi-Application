@@ -16,50 +16,25 @@ struct MapView: View {
     @State private var showPermissionPopup = false
     @State private var locationStatus = false
     
-    private var locationManager = LocationManager()
-    
     var body: some View {
         ZStack {
             UIMapView()
                 .edgesIgnoringSafeArea(.all)
                 .onAppear(perform: {
-                    //uiMapView.updatePOIs(POIList: POIList)
+                    UIMapView.updatePOIs(POIList: POIList)
                 })
             
             
             //Button components
-            //TODO: Move to component view
             VStack{
                 HStack {
                     Spacer()
                     VStack {
-                        Button(action: {}){
-                            Image(systemName: "map.fill")
-                                .foregroundColor(.gray)
+                        MapTypeButton()
+                        LocationToggleButton(locationStatus: $locationStatus, showPermissionPopup: $showPermissionPopup)
+                        if (locationStatus) {
+                            LocationModeButton()
                         }
-                        .padding(13)
-                        
-                        Button(action: {
-                            locationStatus = !locationStatus
-                            if(locationStatus){
-                                showPermissionPopup = true
-                                locationManager.checkIfLocationServicesIsEnabled()
-                                LocationManager.startUpdatingLocation()
-                                if let location = LocationManager.getLocation() {
-                                    print("Setting location")
-                                    UIMapView.centerOnPoint(point: location)
-                                }
-                            }
-                        }){
-                            if (locationStatus) {
-                                Image(systemName: "location")
-                                    .foregroundColor(.blue)
-                            } else {
-                                Image(systemName: "location")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                        .padding(13)
                     }
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 10))

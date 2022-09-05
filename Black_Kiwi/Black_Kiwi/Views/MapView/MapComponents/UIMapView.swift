@@ -16,7 +16,6 @@ struct UIMapView: UIViewRepresentable {
         
         UIMapView.mapView.delegate = context.coordinator
         UIMapView.mapView.pointOfInterestFilter = .excludingAll
-        UIMapView.mapView.showsUserLocation = true
         
         UIMapView.mapView.setRegion(MapModel.defaultMapRegion, animated: false)
         
@@ -79,7 +78,16 @@ struct UIMapView: UIViewRepresentable {
     }
     
     static func centerOnPoint(point: CLLocationCoordinate2D){
+        print("Centering on lat: \(point.latitude)\tlon: \(point.longitude)")
         UIMapView.mapView.setRegion(MKCoordinateRegion(center: point, latitudinalMeters: 200, longitudinalMeters: 200), animated: true)
+    }
+    
+    static func startTrackingUser(){
+        UIMapView.mapView.showsUserLocation = true
+    }
+    
+    static func stopTrackingUser(){
+        UIMapView.mapView.showsUserLocation = false
     }
     
 }
