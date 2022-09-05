@@ -13,30 +13,33 @@ struct MapView: View {
     
     @State private var restHeights = [30, 200, UIScreen.main.bounds.height - 200]
     @State private var POIList: [POIModel.Item] = POIModel.Item.sampleData
+    @State private var showPermissionPopup = false
+    @State private var locationStatus = false
+    @State private var showRestrictedAccessAlert = false
+    @State private var showDeniedAccessAlert = false
     
     var body: some View {
         ZStack {
-            UIMapView(POIList: $POIList)
+            UIMapView()
                 .edgesIgnoringSafeArea(.all)
+                .onAppear(perform: {
+                    UIMapView.updatePOIs(POIList: POIList)
+                    LocationManager.showDeniedAccessAlert = $showDeniedAccessAlert
+                    LocationManager.showRestrictedAccessAlert = $showRestrictedAccessAlert
+                    LocationManager.locationStatus = $locationStatus
+                })
             
             
             //Button components
-            //TODO: Move to component view
             VStack{
                 HStack {
                     Spacer()
                     VStack {
-                        Button(action: {}){
-                            Image(systemName: "map.fill")
-                                .foregroundColor(.gray)
+                        MapTypeButton()
+                        LocationToggleButton(locationStatus: $locationStatus, showPermissionPopup: $showPermissionPopup)
+                        if (locationStatus) {
+                            LocationModeButton()
                         }
-                        .padding(13)
-                        
-                        Button(action: {}){
-                            Image(systemName: "location")
-                                .foregroundColor(.gray)
-                        }
-                        .padding(13)
                     }
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -53,6 +56,15 @@ struct MapView: View {
             .rest(at: $restHeights)
             
         }
+        .JMAlert(showModal: $showPermissionPopup, for: [.location], autoDismiss: true)
+        .setPermissionComponent(for: .location, description: "Allow access to user location while using the app.")
+        .alert("Location Warning", isPresented: $showRestrictedAccessAlert, actions: {}, message: {Text("Location access is restricted")})
+        .alert("Location Error", isPresented: $showDeniedAccessAlert, actions: {
+            Button("Cancel", role: .cancel, action: {})
+            Button("Open Settings", role: nil, action: {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+            })
+        }, message: {Text("Location access has been denied. Please go to system settings and allow access to location while using.")})
     }
 }
 

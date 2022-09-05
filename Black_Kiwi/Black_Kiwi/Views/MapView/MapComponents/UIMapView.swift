@@ -10,18 +10,16 @@ import MapKit
 
 struct UIMapView: UIViewRepresentable {
     
-    @Binding var POIList: [POIModel.Item]
+    private static let mapView = MKMapView()
     
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
         
-        mapView.delegate = context.coordinator
-        mapView.pointOfInterestFilter = .excludingAll
-        mapView.addAnnotations(POIList)
+        UIMapView.mapView.delegate = context.coordinator
+        UIMapView.mapView.pointOfInterestFilter = .excludingAll
         
-        mapView.region = MapModel.defaultMapRegion
+        UIMapView.mapView.setRegion(MapModel.defaultMapRegion, animated: false)
         
-        return mapView
+        return UIMapView.mapView
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
@@ -71,13 +69,32 @@ struct UIMapView: UIViewRepresentable {
         
     }
     
+    static func updateRegion(region: MKCoordinateRegion) {
+        UIMapView.mapView.region = region;
+    }
     
+    static func updatePOIs(POIList: [POIModel.Item]){
+        UIMapView.mapView.addAnnotations(POIList)
+    }
+    
+    static func centerOnPoint(point: CLLocationCoordinate2D){
+        print("Centering on lat: \(point.latitude)\tlon: \(point.longitude)")
+        UIMapView.mapView.setRegion(MKCoordinateRegion(center: point, latitudinalMeters: 200, longitudinalMeters: 200), animated: true)
+    }
+    
+    static func startTrackingUser(){
+        UIMapView.mapView.showsUserLocation = true
+    }
+    
+    static func stopTrackingUser(){
+        UIMapView.mapView.showsUserLocation = false
+    }
     
 }
 
 struct UIMapView_Previews: PreviewProvider {
     static var previews: some View {
-        UIMapView(POIList: .constant(POIModel.Item.sampleData))
+        UIMapView()
             .previewDevice("iPhone 13")
     }
 }
