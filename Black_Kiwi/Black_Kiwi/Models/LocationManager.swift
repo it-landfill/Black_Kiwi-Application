@@ -13,16 +13,31 @@ class LocationManager: NSObject, ObservableObject {
     
     private static var locationManager: CLLocationManager?
     
-    func checkIfLocationServicesIsEnabled(){
+    static var showDeniedAccessAlert : Binding<Bool> = .constant(false)
+    static var showRestrictedAccessAlert : Binding<Bool> = .constant(false)
+    static var locationStatus : Binding<Bool> = .constant(false)
+    
+    
+    func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled(){
             if LocationManager.locationManager == nil {
                 LocationManager.locationManager = CLLocationManager()
                 LocationManager.locationManager!.delegate = self
                 LocationManager.locationManager!.desiredAccuracy = kCLLocationAccuracyReduced
             }
+            if (LocationManager.locationManager?.authorizationStatus == .denied) {
+                LocationManager.locationStatus.wrappedValue = false
+                LocationManager.showDeniedAccessAlert.wrappedValue = true
+            }
+            
+            if (LocationManager.locationManager?.authorizationStatus == .restricted) {
+                LocationManager.showRestrictedAccessAlert.wrappedValue = true
+            }
         } else {
             print("You have to enable location!!")
+            LocationManager.locationStatus.wrappedValue = false
         }
+        LocationManager.locationStatus.wrappedValue = true
     }
     
     static func setAccuracy(accuracy: CLLocationAccuracy){
@@ -30,10 +45,12 @@ class LocationManager: NSObject, ObservableObject {
     }
     
     static func startUpdatingLocation() {
+        print("Starting location track")
         LocationManager.locationManager?.startUpdatingLocation()
     }
     
     static func stopUpdatingLocation(){
+        print("Stopping location track")
         LocationManager.locationManager?.stopUpdatingLocation()
     }
     
@@ -43,17 +60,20 @@ class LocationManager: NSObject, ObservableObject {
 }
 
 extension LocationManager: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
         case .notDetermined:
             print("[DEBUG] Not Determined")
-            // TODO: Show auth popup
         case .restricted:
             print("[DEBUG] Restricted")
             // TODO: Alert popup
+            LocationManager.showRestrictedAccessAlert.wrappedValue = true
         case .denied:
             print("[DEBUG] Denied")
             // TODO: Error popup
+            LocationManager.showDeniedAccessAlert.wrappedValue = true
+            LocationManager.locationStatus.wrappedValue = false
         case .authorizedAlways:
             print("[DEBUG] Always")
         case .authorizedWhenInUse:

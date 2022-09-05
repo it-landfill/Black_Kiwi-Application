@@ -15,6 +15,8 @@ struct MapView: View {
     @State private var POIList: [POIModel.Item] = POIModel.Item.sampleData
     @State private var showPermissionPopup = false
     @State private var locationStatus = false
+    @State private var showRestrictedAccessAlert = false
+    @State private var showDeniedAccessAlert = false
     
     var body: some View {
         ZStack {
@@ -22,6 +24,9 @@ struct MapView: View {
                 .edgesIgnoringSafeArea(.all)
                 .onAppear(perform: {
                     UIMapView.updatePOIs(POIList: POIList)
+                    LocationManager.showDeniedAccessAlert = $showDeniedAccessAlert
+                    LocationManager.showRestrictedAccessAlert = $showRestrictedAccessAlert
+                    LocationManager.locationStatus = $locationStatus
                 })
             
             
@@ -53,6 +58,13 @@ struct MapView: View {
         }
         .JMAlert(showModal: $showPermissionPopup, for: [.location], autoDismiss: true)
         .setPermissionComponent(for: .location, description: "Allow access to user location while using the app.")
+        .alert("Location Warning", isPresented: $showRestrictedAccessAlert, actions: {}, message: {Text("Location access is restricted")})
+        .alert("Location Error", isPresented: $showDeniedAccessAlert, actions: {
+            Button("Cancel", role: .cancel, action: {})
+            Button("Open Settings", role: nil, action: {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+            })
+        }, message: {Text("Location access has been denied. Please go to system settings and allow access to location while using.")})
     }
 }
 
