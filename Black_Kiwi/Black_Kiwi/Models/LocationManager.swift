@@ -54,8 +54,12 @@ class LocationManager: NSObject, ObservableObject {
         LocationManager.locationManager?.stopUpdatingLocation()
     }
     
-    static func getLocation() -> CLLocationCoordinate2D?{
-        return LocationManager.locationManager?.location?.coordinate ?? nil
+    static func getLocation() -> CLLocation?{
+        return LocationManager.locationManager?.location ?? nil
+    }
+    
+    static func getCoordinates() -> CLLocationCoordinate2D?{
+        return LocationManager.getLocation()?.coordinate ?? nil
     }
 }
 

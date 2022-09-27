@@ -32,7 +32,6 @@ struct POIModel {
         var title: String?
         var category: CategoryTypes
         var coordinate: CLLocationCoordinate2D
-        var distance: Float = 0.0
         var rank: Float
         
         init(
@@ -45,10 +44,22 @@ struct POIModel {
             self.title = name
             self.category = category
             self.coordinate = coordinate
-            self.distance = 0.0
             self.rank = rank
             
             super.init()
+        }
+        
+        func getDistance(position: CLLocation?) -> String {
+            if let position = position {
+                let dist: Double = position.distance(from: CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude))
+                if dist>1000 {
+                    return "\(String(format: "%.2f", dist/1000)) Km"
+                } else {
+                    return "\(String(format: "%.2f", dist)) m"
+                }
+            } else {
+                return "--- Km"
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ struct LocationModeButton: View {
     
     var body: some View {
         Button(action: {
-            if let location = LocationManager.getLocation() {
+            if let location = LocationManager.getCoordinates() {
                 UIMapView.centerOnPoint(point: location)
             }
         }){

@@ -11,6 +11,7 @@ import MapKit
 struct UIMapView: UIViewRepresentable {
     
     private static let mapView = MKMapView()
+    static var selectedPOI : Binding<POIModel.Item?> = .constant(nil)
     
     func makeUIView(context: Context) -> MKMapView {
         
@@ -55,6 +56,13 @@ struct UIMapView: UIViewRepresentable {
                 view = dequeuedView
             } else {
                 
+                let button = UIButton(type: .detailDisclosure)
+                button.addAction(UIAction{
+                    _ in
+                    UIMapView.selectedPOI.wrappedValue = annotation
+                }, for: .primaryActionTriggered)
+                
+                
                 view = MKMarkerAnnotationView(
                     annotation: annotation,
                     reuseIdentifier: identifier)
@@ -62,7 +70,7 @@ struct UIMapView: UIViewRepresentable {
                 view.calloutOffset = CGPoint(x: 0, y: 20)
                 view.glyphImage = UIImage(systemName: annotation.categoryStruct.icon)
                 view.markerTintColor = UIColor(annotation.categoryStruct.color)
-                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                view.rightCalloutAccessoryView = button
             }
             return view
         }
@@ -79,7 +87,7 @@ struct UIMapView: UIViewRepresentable {
     
     static func centerOnPoint(point: CLLocationCoordinate2D){
         print("Centering on lat: \(point.latitude)\tlon: \(point.longitude)")
-        UIMapView.mapView.setRegion(MKCoordinateRegion(center: point, latitudinalMeters: 200, longitudinalMeters: 200), animated: true)
+        UIMapView.mapView.setRegion(MKCoordinateRegion(center: point, latitudinalMeters: 800, longitudinalMeters: 800), animated: true)
     }
     
     static func startTrackingUser(){

@@ -17,6 +17,7 @@ struct MapView: View {
     @State private var locationStatus = false
     @State private var showRestrictedAccessAlert = false
     @State private var showDeniedAccessAlert = false
+    @State private var selectedPOI: POIModel.Item? = nil
     
     var body: some View {
         ZStack {
@@ -24,6 +25,7 @@ struct MapView: View {
                 .edgesIgnoringSafeArea(.all)
                 .onAppear(perform: {
                     UIMapView.updatePOIs(POIList: POIList)
+                    UIMapView.selectedPOI = $selectedPOI
                     LocationManager.showDeniedAccessAlert = $showDeniedAccessAlert
                     LocationManager.showRestrictedAccessAlert = $showRestrictedAccessAlert
                     LocationManager.locationStatus = $locationStatus
@@ -51,7 +53,7 @@ struct MapView: View {
             }
             
             Drawer {
-                DrawerContentView(restHeights: $restHeights)
+                DrawerContentView(restHeights: $restHeights, POIInfo: $selectedPOI)
             }
             .rest(at: $restHeights)
             
