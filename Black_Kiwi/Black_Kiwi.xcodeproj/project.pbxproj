@@ -24,9 +24,6 @@
 		FFF1B7F428A8E799002DD26D /* Black_KiwiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7F328A8E799002DD26D /* Black_KiwiUITests.swift */; };
 		FFF1B7F628A8E799002DD26D /* Black_KiwiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7F528A8E799002DD26D /* Black_KiwiUITestsLaunchTests.swift */; };
 		FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80428A8E829002DD26D /* WIPView.swift */; };
-		FFF1B80828A8E865002DD26D /* POIDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80728A8E865002DD26D /* POIDetailView.swift */; };
-		FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80928A8E883002DD26D /* ListView.swift */; };
-		FFF1B80C28A8E89E002DD26D /* ListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80B28A8E89E002DD26D /* ListElementView.swift */; };
 		FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80E28A8E8C4002DD26D /* MapView.swift */; };
 		FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81128A8E8E9002DD26D /* UIMapView.swift */; };
 		FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81728A8E925002DD26D /* DrawerContentView.swift */; };
@@ -70,9 +67,6 @@
 		FFF1B7F328A8E799002DD26D /* Black_KiwiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiUITests.swift; sourceTree = "<group>"; };
 		FFF1B7F528A8E799002DD26D /* Black_KiwiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FFF1B80428A8E829002DD26D /* WIPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIPView.swift; sourceTree = "<group>"; };
-		FFF1B80728A8E865002DD26D /* POIDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetailView.swift; sourceTree = "<group>"; };
-		FFF1B80928A8E883002DD26D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		FFF1B80B28A8E89E002DD26D /* ListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementView.swift; sourceTree = "<group>"; };
 		FFF1B80E28A8E8C4002DD26D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FFF1B81128A8E8E9002DD26D /* UIMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMapView.swift; sourceTree = "<group>"; };
 		FFF1B81728A8E925002DD26D /* DrawerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContentView.swift; sourceTree = "<group>"; };
@@ -178,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				FFF1B80D28A8E8AF002DD26D /* MapView */,
-				FFF1B80628A8E855002DD26D /* ListView */,
 				FFF1B80428A8E829002DD26D /* WIPView.swift */,
 			);
 			path = Views;
@@ -192,16 +185,6 @@
 				FFB0646E28C0B09400283CF3 /* LocationManager.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		FFF1B80628A8E855002DD26D /* ListView */ = {
-			isa = PBXGroup;
-			children = (
-				FFF1B80728A8E865002DD26D /* POIDetailView.swift */,
-				FFF1B80928A8E883002DD26D /* ListView.swift */,
-				FFF1B80B28A8E89E002DD26D /* ListElementView.swift */,
-			);
-			path = ListView;
 			sourceTree = "<group>";
 		};
 		FFF1B80D28A8E8AF002DD26D /* MapView */ = {
@@ -374,16 +357,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF586A9328BF676200755E5A /* RequestPermissions.swift in Sources */,
-				FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */,
 				FFC7BDBF28C72B7F003AA521 /* DrawerBaseComponent.swift in Sources */,
 				FFB0646F28C0B09400283CF3 /* LocationManager.swift in Sources */,
 				FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */,
 				FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */,
-				FFF1B80C28A8E89E002DD26D /* ListElementView.swift in Sources */,
 				FF73FCAE28C5DF4E005E7EC5 /* LocationToggleButton.swift in Sources */,
 				FF73FCAC28C5DED6005E7EC5 /* MapTypeButton.swift in Sources */,
 				FFC7BDC128C72BB0003AA521 /* DrawerPOIInfo.swift in Sources */,
-				FFF1B80828A8E865002DD26D /* POIDetailView.swift in Sources */,
 				FFF1B81C28A8E955002DD26D /* MapModel.swift in Sources */,
 				FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */,
 				FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */,

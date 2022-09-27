@@ -87,7 +87,7 @@ struct UIMapView: UIViewRepresentable {
     
     static func centerOnPoint(point: CLLocationCoordinate2D){
         print("Centering on lat: \(point.latitude)\tlon: \(point.longitude)")
-        UIMapView.mapView.setRegion(MKCoordinateRegion(center: point, latitudinalMeters: 200, longitudinalMeters: 200), animated: true)
+        UIMapView.mapView.setRegion(MKCoordinateRegion(center: point, latitudinalMeters: 800, longitudinalMeters: 800), animated: true)
     }
     
     static func startTrackingUser(){

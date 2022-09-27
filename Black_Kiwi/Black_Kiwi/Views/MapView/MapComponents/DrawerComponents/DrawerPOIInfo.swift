@@ -16,6 +16,7 @@ struct DrawerPOIInfo: View {
             HStack {
                 Text(poi?.title ?? "TITLE")
                     .font(.title)
+                    .bold()
                 Spacer()
                 Button(action: {
                     poi = nil
@@ -27,20 +28,24 @@ struct DrawerPOIInfo: View {
             }
             Text(poi?.categoryStruct.name ?? "Category")
                 .font(.caption)
+            Divider()
             HStack{
                 VStack{
                     Text("Rank")
                         .bold()
                     Text("\(poi?.rank ?? 0, specifier: "%.1f")")
                 }
+                Spacer()
                 VStack{
                     Text("Distance")
                         .bold()
-                    Text("\(poi?.distance ?? 0, specifier: "%.1f") Km")
+                    Text(poi?.getDistance(position: LocationManager.getLocation()) ?? "--- Km")
                 }
             }
             .font(.body)
             .padding(.top, 10)
+            .padding(.horizontal,20)
+            Divider()
         }
         
     }
