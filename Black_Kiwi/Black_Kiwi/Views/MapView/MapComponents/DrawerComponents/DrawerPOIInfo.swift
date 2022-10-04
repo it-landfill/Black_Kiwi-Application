@@ -48,9 +48,9 @@ struct DrawerPOIInfo: View {
             .padding(.horizontal,20)
             Divider()
         }
-        .onAppear(perform: {
-            restHeights = [200]
-        })
+        .task {
+            await DrawerModel.setHeight(restHeights: $restHeights, height: DrawerModel.heights.mid)
+        }
         
     }
 }

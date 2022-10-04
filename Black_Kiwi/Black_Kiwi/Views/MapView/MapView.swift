@@ -11,7 +11,7 @@ import Drawer
 
 struct MapView: View {
     
-    @State private var restHeights = [30, 200, UIScreen.main.bounds.height - 200]
+    @State private var restHeights = DrawerModel.defaultHeights
     @State private var POIList: [POIModel.Item] = POIModel.Item.sampleData
     @State private var showPermissionPopup = false
     @State private var locationStatus = false
