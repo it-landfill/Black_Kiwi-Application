@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct DrawerBaseComponent: View {
+    
+    @Binding var openSettings: Bool
+    @Binding var restHeights: [CGFloat]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                
+                Spacer()
+                Button(action: {
+                    openSettings = true
+                }){
+                    Image(systemName: "gear.circle.fill")
+                        .foregroundColor(.gray)
+                        .font(.title)
+                }
+            }
+            WIPView(newContent: "Base drawer tab")
+        }
     }
 }
 
 struct DrawerBaseComponent_Previews: PreviewProvider {
     static var previews: some View {
-        DrawerBaseComponent()
+        DrawerBaseComponent(openSettings: .constant(false), restHeights: .constant([200]))
+            .previewLayout(.sizeThatFits)
     }
 }

@@ -11,6 +11,7 @@ struct DrawerContentView: View {
     
     @Binding var restHeights: [CGFloat]
     @Binding var POIInfo: POIModel.Item?
+    @State private var openSettings: Bool = false
     
     var body: some View {
         ZStack {
@@ -19,13 +20,17 @@ struct DrawerContentView: View {
                 .foregroundColor(.white)
                 .shadow(radius: 100)
             
-            ScrollView{
-                if POIInfo != nil {
-                    DrawerPOIInfo(poi: $POIInfo)
+            VStack {
+                if openSettings {
+                    DrawerSettingsView(openSettings: $openSettings, restHeights: $restHeights)
+                } else if POIInfo != nil {
+                    DrawerPOIInfo(poi: $POIInfo, restHeights: $restHeights)
                 } else {
-                    DrawerBaseComponent()
+                    DrawerBaseComponent(openSettings: $openSettings, restHeights: $restHeights)
                 }
+                Spacer()
             }
+            .border(.red)
             .padding(.all, 20)
             
             VStack(alignment: .center) {
@@ -42,11 +47,20 @@ struct DrawerContentView: View {
 
 struct DrawerContentView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
-            Spacer()
-            DrawerContentView(restHeights: .constant([30, 200, UIScreen.main.bounds.height - 200]), POIInfo: .constant(POIModel.Item.sampleData[2]))
+        Group{
+            VStack{
+                Spacer()
+                DrawerContentView(restHeights: .constant([30, 200, UIScreen.main.bounds.height - 200]), POIInfo: .constant(POIModel.Item.sampleData[2]))
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .previewDevice("iPhone 13")
+            
+            VStack{
+                Spacer()
+                DrawerContentView(restHeights: .constant([30, 200, UIScreen.main.bounds.height - 200]), POIInfo: .constant(nil))
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .previewDevice("iPhone 13")
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .previewDevice("iPhone 13")
     }
 }
