@@ -11,13 +11,13 @@ import Drawer
 
 struct MapView: View {
     
-    @StateObject var mapSettings: MapSettings = MapSettings()
     @Binding var selectedPOI: POIModel.Item?
     
     @State private var showPermissionPopup = false
     @State private var locationStatus = false
     @State private var showRestrictedAccessAlert = false
     @State private var showDeniedAccessAlert = false
+    @State private var POIList: [POIModel.Item] = POIModel.Item.sampleData
     @EnvironmentObject private var locationManager: LocationManager
     
     var body: some View {
@@ -25,7 +25,7 @@ struct MapView: View {
             UIMapView()
                 .edgesIgnoringSafeArea(.all)
                 .onAppear(perform: {
-                    UIMapView.updatePOIs(POIList: mapSettings.poiList)
+                    UIMapView.updatePOIs(POIList: POIList)
                     UIMapView.selectedPOI = $selectedPOI
                     locationManager.showDeniedAccessAlert = $showDeniedAccessAlert
                     locationManager.showRestrictedAccessAlert = $showRestrictedAccessAlert
