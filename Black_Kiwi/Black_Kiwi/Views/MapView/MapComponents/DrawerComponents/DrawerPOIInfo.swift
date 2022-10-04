@@ -10,6 +10,7 @@ import SwiftUI
 struct DrawerPOIInfo: View {
     
     @Binding var poi: POIModel.Item?
+    @Binding var restHeights: [CGFloat]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -47,13 +48,16 @@ struct DrawerPOIInfo: View {
             .padding(.horizontal,20)
             Divider()
         }
+        .onAppear(perform: {
+            restHeights = [200]
+        })
         
     }
 }
 
 struct DrawerPOIInfo_Previews: PreviewProvider {
     static var previews: some View {
-        DrawerPOIInfo(poi: .constant(nil))
+        DrawerPOIInfo(poi: .constant(nil), restHeights: .constant([200]))
             .previewLayout(.sizeThatFits)
     }
 }

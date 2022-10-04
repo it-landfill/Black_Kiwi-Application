@@ -56,6 +56,10 @@ struct DrawerSettingsView: View {
             }
         }
         Spacer()
+            .onAppear(perform: {
+                restHeights = [300]
+                restHeights = [10, 300, UIScreen.main.bounds.height - 200]
+            })
     }
 }
 

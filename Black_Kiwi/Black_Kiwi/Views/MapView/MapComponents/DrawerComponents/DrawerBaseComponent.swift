@@ -27,6 +27,9 @@ struct DrawerBaseComponent: View {
             }
             WIPView(newContent: "Base drawer tab")
         }
+        .onAppear(perform: {
+            restHeights = [30, 200, UIScreen.main.bounds.height - 200]
+        })
     }
 }
 
