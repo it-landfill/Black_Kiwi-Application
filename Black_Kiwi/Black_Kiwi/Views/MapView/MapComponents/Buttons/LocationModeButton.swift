@@ -14,8 +14,9 @@ struct LocationModeButton: View {
     var body: some View {
         
         Button(action: {
-                UIMapView.centerOnPoint(point: location)
            if let location = locationManager.getCoordinates() {
+               print("Centering on location")
+               UIMapView.centerOnPoint(point: location)
             }
         }){
             Image(systemName: "location.fill.viewfinder")

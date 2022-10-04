@@ -11,25 +11,31 @@ import SwiftUI
 
 class LocationManager: NSObject, ObservableObject {
     
-    private var locationManager: CLLocationManager?
+    private var locationManager: CLLocationManager
     
     var showDeniedAccessAlert : Binding<Bool> = .constant(false)
     var showRestrictedAccessAlert : Binding<Bool> = .constant(false)
     var locationStatus : Binding<Bool> = .constant(false)
     
+    override init() {
+        locationManager = CLLocationManager()
+        super.init()
+        print("Init LM")
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyReduced
+        if let location = locationManager.location {
+            UIMapView.centerOnPoint(point: location.coordinate)
+        }
+    }
     
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled(){
-            if locationManager == nil {
-                locationManager = CLLocationManager()
-                locationManager!.desiredAccuracy = kCLLocationAccuracyReduced
-            }
-            if (locationManager?.authorizationStatus == .denied) {
+            if (locationManager.authorizationStatus == .denied) {
                 locationStatus.wrappedValue = false
                 showDeniedAccessAlert.wrappedValue = true
             }
             
-            if (locationManager?.authorizationStatus == .restricted) {
+            if (locationManager.authorizationStatus == .restricted) {
                 showRestrictedAccessAlert.wrappedValue = true
             }
         } else {
@@ -40,17 +46,42 @@ class LocationManager: NSObject, ObservableObject {
     }
     
     func setAccuracy(accuracy: CLLocationAccuracy){
-        locationManager?.desiredAccuracy = accuracy
+        locationManager.desiredAccuracy = accuracy
     }
     
     func getCoordinates() -> CLLocationCoordinate2D?{
-        return locationManager?.location?.coordinate ?? nil
+        return getLocation()?.coordinate ?? nil
     }
     
     func getLocation() -> CLLocation?{
-        return locationManager?.location ?? nil
+        return locationManager.location ?? nil
     }
     
+}
+
+extension LocationManager: CLLocationManagerDelegate {
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            print("[DEBUG] Not Determined")
+        case .restricted:
+            print("[DEBUG] Restricted")
+            // TODO: Alert popup
+            showRestrictedAccessAlert.wrappedValue = true
+        case .denied:
+            print("[DEBUG] Denied")
+            // TODO: Error popup
+            showDeniedAccessAlert.wrappedValue = true
+            locationStatus.wrappedValue = false
+        case .authorizedAlways:
+            print("[DEBUG] Always")
+        case .authorizedWhenInUse:
+            print("[DEBUG] In Use")
+        @unknown default:
+            break
+        }
+    }
 }
 
 extension LocationManager {
