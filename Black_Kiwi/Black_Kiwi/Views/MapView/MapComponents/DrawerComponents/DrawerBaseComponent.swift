@@ -28,7 +28,7 @@ struct DrawerBaseComponent: View {
             WIPView(newContent: "Base drawer tab")
         }
         .task {
-            await DrawerModel.setHeight(restHeights: $restHeights, height: DrawerModel.heights.low)
+            await DrawerModel.setHeight(restHeights: $restHeights, height: DrawerModel.heights.peek)
         }
     }
 }
