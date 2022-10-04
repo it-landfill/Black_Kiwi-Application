@@ -45,10 +45,8 @@ struct DrawerSettingsView: View {
                         }
                     }
                     .onChange(of: selectedPrivacyModel) { newModel in
-                        print("Saving selection")
                         if let encoded = try? JSONEncoder().encode(newModel) {
                             UserDefaults.standard.set(encoded, forKey: "PrivacyModel")
-                            print("Saved \(encoded)")
                         }
                     }
                     
@@ -65,12 +63,9 @@ struct DrawerSettingsView: View {
         }
         Spacer()
             .onAppear(perform: {
-                print("Loading selection")
                 if let privacyModData = UserDefaults.standard.object(forKey: "PrivacyModel") as? Data {
-                    print("Loading selection1")
                     if let privacyMod = try? JSONDecoder().decode(LocationManager.PrivacyModels.self, from: privacyModData) {
                         selectedPrivacyModel = privacyMod
-                        print("Loadied \(selectedPrivacyModel.rawValue)")
                     }
                 }
             })
