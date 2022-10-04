@@ -95,3 +95,32 @@ extension LocationManager: CLLocationManagerDelegate {
     }
 }
 
+extension LocationManager {
+    enum PrivacyModels: String, Codable, CaseIterable {
+        case none = "None"
+        case A = "A"
+        case B = "B"
+        case C = "C"
+        case D = "D"
+    }
+    
+    struct PrivacyModel {
+        let model: PrivacyModels
+        let description: String
+    }
+    
+    static func getPrivacyModelInfo(_ model: PrivacyModels) -> PrivacyModel {
+        switch model {
+        case .none:
+            return PrivacyModel(model: PrivacyModels.none, description: "No privacy")
+        case .A:
+            return PrivacyModel(model: PrivacyModels.A, description: "Privacy A")
+        case .B:
+            return PrivacyModel(model: PrivacyModels.B, description: "Privacy B")
+        case .C:
+            return PrivacyModel(model: PrivacyModels.C, description: "Privacy C")
+        case .D:
+            return PrivacyModel(model: PrivacyModels.D, description: "Privacy D")
+        }
+    }
+}
