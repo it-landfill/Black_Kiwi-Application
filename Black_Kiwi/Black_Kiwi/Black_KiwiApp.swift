@@ -11,7 +11,7 @@ import SwiftUI
 struct Black_KiwiApp: App {
     var body: some Scene {
         WindowGroup {
-            MapView()
+            MainView()
         }
     }
 }

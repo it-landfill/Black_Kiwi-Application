@@ -12,6 +12,8 @@ struct DrawerPOIInfo: View {
     @Binding var poi: POIModel.Item?
     @Binding var restHeights: [CGFloat]
     
+    @EnvironmentObject private var locationManager: LocationManager
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -40,7 +42,7 @@ struct DrawerPOIInfo: View {
                 VStack{
                     Text("Distance")
                         .bold()
-                    Text(poi?.getDistance(position: LocationManager.getLocation()) ?? "--- Km")
+                    Text(poi?.getDistance(position: locationManager.getLocation()) ?? "--- Km")
                 }
             }
             .font(.body)
