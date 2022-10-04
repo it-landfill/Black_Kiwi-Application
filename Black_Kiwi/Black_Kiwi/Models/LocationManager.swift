@@ -96,7 +96,7 @@ extension LocationManager: CLLocationManagerDelegate {
 }
 
 extension LocationManager {
-    enum PrivacyModels: String, CaseIterable {
+    enum PrivacyModels: String, Codable, CaseIterable {
         case none = "None"
         case A = "A"
         case B = "B"
