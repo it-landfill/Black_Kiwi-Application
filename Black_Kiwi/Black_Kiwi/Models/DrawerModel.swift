@@ -10,8 +10,8 @@ import SwiftUI
 
 struct DrawerModel {
     enum heights: CGFloat {
-        case hidden = -5
-        case low = 20
+        case peek = -5
+        case low = 50
         case mid = 300
         case high = 600
     }
@@ -27,9 +27,9 @@ struct DrawerModel {
         catch {
             print("Unexpected error in DrawModel.setHeight: \(error)")
         }
-        if height == .hidden {
+        if height == .peek {
             var tmpHeights = availHeights
-            tmpHeights.append(heights.hidden.rawValue)
+            tmpHeights.append(heights.peek.rawValue)
             restHeights.wrappedValue = tmpHeights
         } else {
             restHeights.wrappedValue = availHeights

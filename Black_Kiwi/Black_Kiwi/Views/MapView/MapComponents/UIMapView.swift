@@ -18,7 +18,7 @@ struct UIMapView: UIViewRepresentable {
         UIMapView.mapView.delegate = context.coordinator
         UIMapView.mapView.pointOfInterestFilter = .excludingAll
         
-        UIMapView.mapView.setRegion(MapModel.defaultMapRegion, animated: false)
+        UIMapView.mapView.setRegion(MapSettings.defaultMapRegion, animated: false)
         
         return UIMapView.mapView
     }

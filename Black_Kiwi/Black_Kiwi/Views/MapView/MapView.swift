@@ -11,13 +11,14 @@ import Drawer
 
 struct MapView: View {
     
-    @State private var restHeights = DrawerModel.defaultHeights
-    @State private var POIList: [POIModel.Item] = POIModel.Item.sampleData
+    @Binding var selectedPOI: POIModel.Item?
+    
     @State private var showPermissionPopup = false
     @State private var locationStatus = false
     @State private var showRestrictedAccessAlert = false
     @State private var showDeniedAccessAlert = false
-    @State private var selectedPOI: POIModel.Item? = nil
+    @State private var POIList: [POIModel.Item] = POIModel.Item.sampleData
+    @EnvironmentObject private var locationManager: LocationManager
     
     var body: some View {
         ZStack {
@@ -26,9 +27,9 @@ struct MapView: View {
                 .onAppear(perform: {
                     UIMapView.updatePOIs(POIList: POIList)
                     UIMapView.selectedPOI = $selectedPOI
-                    LocationManager.showDeniedAccessAlert = $showDeniedAccessAlert
-                    LocationManager.showRestrictedAccessAlert = $showRestrictedAccessAlert
-                    LocationManager.locationStatus = $locationStatus
+                    locationManager.showDeniedAccessAlert = $showDeniedAccessAlert
+                    locationManager.showRestrictedAccessAlert = $showRestrictedAccessAlert
+                    locationManager.locationStatus = $locationStatus
                 })
             
             
@@ -52,10 +53,7 @@ struct MapView: View {
                 
             }
             
-            Drawer {
-                DrawerContentView(restHeights: $restHeights, POIInfo: $selectedPOI)
-            }
-            .rest(at: $restHeights)
+            
             
         }
         .JMAlert(showModal: $showPermissionPopup, for: [.location], autoDismiss: true)
@@ -72,7 +70,7 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(selectedPOI: .constant(nil))
             .previewDevice("iPhone 13")
     }
 }

@@ -9,10 +9,14 @@ import SwiftUI
 
 struct LocationModeButton: View {
     
+    @EnvironmentObject private var locationManager: LocationManager
+    
     var body: some View {
+        
         Button(action: {
-            if let location = LocationManager.getCoordinates() {
-                UIMapView.centerOnPoint(point: location)
+           if let location = locationManager.getCoordinates() {
+               print("Centering on location")
+               UIMapView.centerOnPoint(point: location)
             }
         }){
             Image(systemName: "location.fill.viewfinder")

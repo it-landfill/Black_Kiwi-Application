@@ -15,7 +15,7 @@ struct ViewPosition: View {
     var body: some View {
         ZStack {
             Map(
-                coordinateRegion: .constant(MapModel.defaultMapRegion),
+                coordinateRegion: .constant(MapSettings.defaultMapRegion),
                 showsUserLocation: true
             )
             Button(action: {
