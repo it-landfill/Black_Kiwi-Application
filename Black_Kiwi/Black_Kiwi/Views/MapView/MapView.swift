@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import Drawer
+import PermissionsSwiftUILocation
 
 struct MapView: View {
     
