@@ -18,10 +18,15 @@ struct MainView: View {
     var body: some View {
         ZStack {
             MapView(selectedPOI: $selectedPOI)
-            Drawer {
-                DrawerContentView(restHeights: $restHeights, POIInfo: $selectedPOI)
+            HStack {
+                Drawer {
+                    DrawerContentView(restHeights: $restHeights, POIInfo: $selectedPOI)
+                }
+                .rest(at: $restHeights)
+                .frame(maxWidth: 400)
+                Spacer()
             }
-            .rest(at: $restHeights)
+            .padding(.leading,10)
         }
         .environmentObject(locationManager)
     }
