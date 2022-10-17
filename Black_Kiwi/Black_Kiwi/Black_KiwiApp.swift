@@ -12,6 +12,7 @@ struct Black_KiwiApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+            //testAPI()
         }
     }
 }

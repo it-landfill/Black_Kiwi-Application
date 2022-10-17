@@ -19,16 +19,16 @@ struct POIModel {
         let icon: String
     }
     
-    enum CategoryTypes {
-        case historical_building
-        case park
-        case theater
-        case museum
-        case department
+    enum CategoryTypes: String, Codable, CaseIterable {
+        case historical_building = "Historical Building"
+        case park = "Park"
+        case theater = "Theater"
+        case museum = "Museum"
+        case department = "Department"
     }
     
     class Item: NSObject, Identifiable, MKAnnotation {
-        let id: UUID
+        let id: UUID //TODO: Allineare con ID backend
         var title: String?
         var category: CategoryTypes
         var coordinate: CLLocationCoordinate2D

@@ -30,7 +30,6 @@ struct DrawerContentView: View {
                 }
                 Spacer()
             }
-            .border(.red)
             .padding(.all, 20)
             
             VStack(alignment: .center) {
