@@ -26,7 +26,7 @@ struct MapView: View {
             UIMapView()
                 .edgesIgnoringSafeArea(.all)
                 .onAppear(perform: {
-                    UIMapView.updatePOIs(POIList: POIList)
+                    //UIMapView.updatePOIs(POIList: POIList)
                     UIMapView.selectedPOI = $selectedPOI
                     locationManager.showDeniedAccessAlert = $showDeniedAccessAlert
                     locationManager.showRestrictedAccessAlert = $showRestrictedAccessAlert
@@ -72,6 +72,7 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView(selectedPOI: .constant(nil))
+            .environmentObject(LocationManager())
             .previewDevice("iPhone 13")
     }
 }

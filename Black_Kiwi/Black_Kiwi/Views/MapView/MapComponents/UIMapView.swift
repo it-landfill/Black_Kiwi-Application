@@ -82,6 +82,10 @@ struct UIMapView: UIViewRepresentable {
     }
     
     static func updatePOIs(POIList: [POIModel.Item]){
+        print("Updating displayed POIs")
+        POIList.forEach{ el in
+            print(el.title ?? "No title given")
+        }
         UIMapView.mapView.addAnnotations(POIList)
     }
     

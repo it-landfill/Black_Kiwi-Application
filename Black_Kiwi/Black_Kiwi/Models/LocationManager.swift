@@ -53,6 +53,10 @@ class LocationManager: NSObject, ObservableObject {
         return getLocation()?.coordinate ?? nil
     }
     
+    func getCoordinatesWithNoise() -> CLLocationCoordinate2D?{
+        return getLocation()?.coordinate ?? nil
+    }
+    
     func getLocation() -> CLLocation?{
         return locationManager.location ?? nil
     }
