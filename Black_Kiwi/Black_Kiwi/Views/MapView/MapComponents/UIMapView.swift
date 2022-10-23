@@ -43,6 +43,7 @@ struct UIMapView: UIViewRepresentable {
             // Apply annotation texture only to POIModel.Item items (does not apply to user location for example)
             // returning nil applies the default texture
             guard let annotation = annotation as? POIModel.Item else {
+                print("[ERROR] Annotation is not a POIModel.Item")
                 return nil
             }
             
@@ -50,10 +51,22 @@ struct UIMapView: UIViewRepresentable {
             let identifier = "POI"
             var view: MKMarkerAnnotationView
             
-            if let dequeuedView = mapView.dequeueReusableAnnotationView(
-                withIdentifier: identifier) as? MKMarkerAnnotationView {
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(                withIdentifier: identifier) as? MKMarkerAnnotationView {
                 dequeuedView.annotation = annotation
                 view = dequeuedView
+                let button = UIButton(type: .detailDisclosure)
+                button.addAction(UIAction{
+                    _ in
+                    UIMapView.selectedPOI.wrappedValue = annotation
+                }, for: .primaryActionTriggered)
+                view.glyphImage = UIImage(systemName: annotation.categoryStruct.icon)
+                view.markerTintColor = UIColor(annotation.categoryStruct.color)
+                view.annotation = annotation
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: 0, y: 20)
+                view.glyphImage = UIImage(systemName: annotation.categoryStruct.icon)
+                view.markerTintColor = UIColor(annotation.categoryStruct.color)
+                view.rightCalloutAccessoryView = button
             } else {
                 
                 let button = UIButton(type: .detailDisclosure)
@@ -67,7 +80,7 @@ struct UIMapView: UIViewRepresentable {
                     annotation: annotation,
                     reuseIdentifier: identifier)
                 view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: 0, y: 20)
+                    view.calloutOffset = CGPoint(x: 0, y: 20)
                 view.glyphImage = UIImage(systemName: annotation.categoryStruct.icon)
                 view.markerTintColor = UIColor(annotation.categoryStruct.color)
                 view.rightCalloutAccessoryView = button
@@ -81,11 +94,13 @@ struct UIMapView: UIViewRepresentable {
         UIMapView.mapView.region = region;
     }
     
+    static func deletePOIs() {
+        UIMapView.mapView.removeAnnotations(UIMapView.mapView.annotations)
+    }
+    
     static func updatePOIs(POIList: [POIModel.Item]){
         print("Updating displayed POIs")
-        POIList.forEach{ el in
-            print(el.title ?? "No title given")
-        }
+
         UIMapView.mapView.addAnnotations(POIList)
     }
     

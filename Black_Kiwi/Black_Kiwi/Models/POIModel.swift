@@ -32,13 +32,13 @@ struct POIModel {
         var title: String?
         var category: CategoryTypes
         var coordinate: CLLocationCoordinate2D
-        var rank: Float
+        var rank: Int
         
         init(
             name: String,
             category: CategoryTypes,
             coordinate: CLLocationCoordinate2D,
-            rank: Float
+            rank: Int
         ){
             self.id = UUID()
             self.title = name

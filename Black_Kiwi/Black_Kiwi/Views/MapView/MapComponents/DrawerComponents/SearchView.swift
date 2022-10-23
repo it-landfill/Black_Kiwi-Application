@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @State private var maxDist = 5.0
-    @State private var minRank = 5.0
+    @State private var minRank: Float = 5
     @State private var poiCat: POIModel.CategoryTypes = POIModel.CategoryTypes.department
     @EnvironmentObject private var locationManager: LocationManager
     
@@ -35,16 +34,15 @@ struct SearchView: View {
                         Text(category.rawValue).tag(category)
                     }
                 }
-                Text("Max dist: " + (maxDist == 5 ? "unlimited" : "\(maxDist) Km"))
-                Slider(value: $maxDist, in: 0.5...5, step: 0.5)
                 Text("Min rank: " + (minRank == 0 ? "unlimited" : "\(minRank)"))
-                Slider(value: $minRank, in: 0...5, step: 0.5)
+                Slider(value: $minRank, in: 0...10, step: 1)
                 Button(action: {
                     showSheet = false
                     Task {
                         if let curLoc = locationManager.getCoordinatesWithNoise() {
-                            let poiList = await DataManager.getReccomendations(position: curLoc, category: .department, minRank: 5, limit: 2)
+                            let poiList = await DataManager.getReccomendations(position: curLoc, category: poiCat, minRank: Int(minRank), limit: nil)
                             if let poiList = poiList {
+                                UIMapView.deletePOIs()
                                 UIMapView.updatePOIs(POIList: poiList)
                             } else {
                                 print("Unable to get POI list for search")
