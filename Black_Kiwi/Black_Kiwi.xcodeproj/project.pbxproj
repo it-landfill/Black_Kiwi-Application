@@ -20,7 +20,7 @@
 		FFC7BDBF28C72B7F003AA521 /* DrawerBaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7BDBE28C72B7F003AA521 /* DrawerBaseComponent.swift */; };
 		FFC7BDC128C72BB0003AA521 /* DrawerPOIInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7BDC028C72BB0003AA521 /* DrawerPOIInfo.swift */; };
 		FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFCEB05028B3DAD500369F39 /* Drawer */; };
-		FFD52BA028F9C616003F1D0A /* testAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD52B9F28F9C616003F1D0A /* testAPI.swift */; };
+		FFD52BA028F9C616003F1D0A /* testLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD52B9F28F9C616003F1D0A /* testLocation.swift */; };
 		FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */; };
 		FFF1B7DD28A8E799002DD26D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF1B7DC28A8E799002DD26D /* Assets.xcassets */; };
 		FFF1B7E028A8E799002DD26D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF1B7DF28A8E799002DD26D /* Preview Assets.xcassets */; };
@@ -65,7 +65,7 @@
 		FFBF672F28E9F19100C0A757 /* DrawerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerSettingsView.swift; sourceTree = "<group>"; };
 		FFC7BDBE28C72B7F003AA521 /* DrawerBaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerBaseComponent.swift; sourceTree = "<group>"; };
 		FFC7BDC028C72BB0003AA521 /* DrawerPOIInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPOIInfo.swift; sourceTree = "<group>"; };
-		FFD52B9F28F9C616003F1D0A /* testAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testAPI.swift; sourceTree = "<group>"; };
+		FFD52B9F28F9C616003F1D0A /* testLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testLocation.swift; sourceTree = "<group>"; };
 		FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Black_Kiwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiApp.swift; sourceTree = "<group>"; };
 		FFF1B7DC28A8E799002DD26D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 				FFF1B80D28A8E8AF002DD26D /* MapView */,
 				FFF1B80428A8E829002DD26D /* WIPView.swift */,
 				FFB0208828EC7FE8004B9E4F /* MainView.swift */,
-				FFD52B9F28F9C616003F1D0A /* testAPI.swift */,
+				FFD52B9F28F9C616003F1D0A /* testLocation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 				FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */,
 				FF611B9528EC3509003DD3BA /* DrawerModel.swift in Sources */,
 				FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */,
-				FFD52BA028F9C616003F1D0A /* testAPI.swift in Sources */,
+				FFD52BA028F9C616003F1D0A /* testLocation.swift in Sources */,
 				FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */,
 				FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */,
 				FF73FCB028C5E0E7005E7EC5 /* LocationModeButton.swift in Sources */,
