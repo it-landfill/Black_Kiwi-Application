@@ -97,12 +97,42 @@ struct Location: Identifiable {
     let coordinate: CLLocationCoordinate2D
 }
 
+func randomPointInDisk(radius: Double) -> (Double, Double) {
+    let angle = 2 * Double.pi * Double.random(in: 0...1)
+    let r = radius * sqrt(Double.random(in: 0...1))
+    return (r * cos(angle), r * sin(angle))
+}
+
+func randomLocationInRadius(userLocation: CLLocationCoordinate2D, radius: Double) -> Location {
+    let randomPoint = randomPointInDisk(radius: radius)
+    let latitude = userLocation.latitude + kilometersToDegreesLatitude(kilometers: randomPoint.0)
+    let longitude = userLocation.longitude + kilometersToDegreesLongitude(km: randomPoint.1, latitude: latitude)
+    return Location(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+}
+
+func kilometersToDegreesLatitude(kilometers: Double) -> Double {
+    return kilometers / 111.111
+}
+
+func kilometersToDegreesLongitude(km: Double, latitude: Double) -> Double {
+    return km / (111.111 * cos(latitude * Double.pi / 180))
+}
+
 func generateFakeLocations(_ location: CLLocationCoordinate2D) -> [Location] {
-    return [
-        Location(coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)),
-        Location(coordinate: CLLocationCoordinate2D(latitude: 44.48836217722139, longitude: 11.329221725463867)),
-        Location(coordinate: CLLocationCoordinate2D(latitude: 44.49433189374523, longitude: 11.343083381652832))
-    ]
+    // Number of dummies.
+    let count = 10
+    // List of random locations.
+    var locations: [Location] = []
+    
+    for _ in 0..<count {
+        locations.append(randomLocationInRadius(userLocation: location, radius: 0.5))
+    }
+    
+    for location in locations{
+        print(location)
+    }
+    
+    return locations
 }
 
 struct testAPI_Previews: PreviewProvider {
