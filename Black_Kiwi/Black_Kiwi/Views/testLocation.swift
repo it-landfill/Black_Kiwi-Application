@@ -38,7 +38,7 @@ struct testLocation: View {
                                 print("Generating fake location")
                                 if let location = locationManager.getCoordinates() {
                                     // TODO: Parametrizzare il numero di dummies richiesti
-                                    annotations = generateFakeLocations(location, .poisson, 10)
+                                    annotations = generateFakeLocations(location, .triangular, 10)
                                 }
                                 
                             }, label: {
@@ -115,6 +115,42 @@ func kilometersToDegreesLongitude(km: Double, latitude: Double) -> Double {
     return km / (111.111 * cos(latitude * Double.pi / 180))
 }
 
+func trinagular_random_generator(min: Double, max: Double, mode: Double) -> Double {
+    // generate a random number between 0 and 1
+    let random = Double(arc4random()) / Double(UInt32.max)
+    // calculate the area of the triangle
+    let area = (max - min) * (mode - min) / 2
+    // calculate the area of the triangle
+    if random < area {
+        return min + sqrt(random * (max - min) * (mode - min))
+    } else {
+        return max - sqrt((1 - random) * (max - min) * (max - mode))
+    }
+}
+
+func trinagularPointInDisk(radius: Double, min: Double, max: Double, mode: Double) -> (Double, Double) {
+    let r = radius * sqrt(abs(trinagular_random_generator(min: min, max: max, mode: mode)))
+    print("Trinagular raggio: ", r)
+    let angle = 2 * Double.pi * Double.random(in: 0...1)
+    return (r * cos(angle), r * sin(angle))
+}
+
+func gaussian_random_generator(mean: Double, standard_deviation: Double) -> Double {
+    let u1 = Double.random(in: 0.0 ..< 1.0)
+    let u2 = Double.random(in: 0.0 ..< 1.0)
+    let z0 = sqrt(-2.0 * log(u1)) * cos(2.0 * Double.pi * u2)
+    return z0 * standard_deviation + mean
+}
+
+// Funzione che calcolato l'angolo e la distanza dal centro, ritorna le due componenti, rispettivamente
+// per la latitudine e la longitudine (distribuzione poisson).
+func gaussianPointInDisk(radius: Double, mean: Double, standard_deviation: Double) -> (Double, Double) {
+    let r = radius * sqrt(abs(gaussian_random_generator(mean: mean, standard_deviation:standard_deviation)))
+    print("Gauss raggio: ", r)
+    let angle = 2 * Double.pi * Double.random(in: 0...1)
+    return (r * cos(angle), r * sin(angle))
+}
+
 func poisson_random_generator(_ lambda: Double) -> Double {
     let L = exp(-lambda)
     var p = 1.0
@@ -128,7 +164,7 @@ func poisson_random_generator(_ lambda: Double) -> Double {
 
 // Funzione che calcolato l'angolo e la distanza dal centro, ritorna le due componenti, rispettivamente
 // per la latitudine e la longitudine (distribuzione poisson).
-func poissonPointInDisk(radius: Double, lam: Double, k: Int) -> (Double, Double) {
+func poissonPointInDisk(radius: Double, lam: Double) -> (Double, Double) {
     let r = radius * sqrt(poisson_random_generator(lam))
     print("Poisson raggio: ", r)
     let angle = 2 * Double.pi * Double.random(in: 0...1)
@@ -152,13 +188,13 @@ func randomLocationInRadius(userLocation: CLLocationCoordinate2D,_ distribution:
         deltaLocation = uniformPointInDisk(radius: radius)
     case .poisson:
         print("Poisson distribution")
-        deltaLocation = poissonPointInDisk(radius: radius, lam: 20, k: 1)
+        deltaLocation = poissonPointInDisk(radius: radius, lam: 20)
     case .triangular:
         print("Trinagular distribution")
-        // deltaLocation = randomPointInDisk(radius: radius)
+         deltaLocation = trinagularPointInDisk(radius: radius, min: 0, max: 100, mode: 200)
     case .gaussian:
         print("Gauss distribution")
-        // deltaLocation = randomPointInDisk(radius: radius)
+        deltaLocation = gaussianPointInDisk(radius: radius, mean: 5, standard_deviation:3)
     }
     let latitude = userLocation.latitude + kilometersToDegreesLatitude(kilometers: deltaLocation.0)
     let longitude = userLocation.longitude + kilometersToDegreesLongitude(km: deltaLocation.1, latitude: latitude)
@@ -176,14 +212,12 @@ func generateFakeLocations(_ location: CLLocationCoordinate2D,_ distribution: No
     //        dummiesRequested = maxDummies
     //    }
     
-    for _ in 0..<dummiesRequested {
-        locations.append(randomLocationInRadius(userLocation: location, distribution, radius: 0.5))
+    for _ in 0..<100 {
+        locations.append(randomLocationInRadius(userLocation: location, distribution, radius: 0.1))
     }
     
     return locations
 }
-
-
 
 struct testAPI_Previews: PreviewProvider {
     static var previews: some View {
