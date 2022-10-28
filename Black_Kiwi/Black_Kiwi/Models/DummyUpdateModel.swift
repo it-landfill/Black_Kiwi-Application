@@ -150,7 +150,7 @@ class DummyUpdateModel {
 			k += 1
 			p *= Double.random(in: 0...1)
 		} while p > L
-		let randomRadius: Double = Double(k - 1)
+		let randomRadius: Double = sqrt(Double(k - 1))
         let randomAngle: Double = Double.random(in: 0...2*Double.pi)
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
         let y: Double = kilometersToDegreesLongitude(km: randomRadius * sin(randomAngle), latitude: x)
@@ -159,14 +159,18 @@ class DummyUpdateModel {
     }
     
     // Triangular distribution
+    // TODO:
+    // min:     min = 0 e max = 2 con passo 0.2
+    // max:     min = 0 e max = 4 con passo 0.2
+    // mode:    min = 0 e max = 4 con passo 0.2
     private func generateTriangularNoise(location: CLLocationCoordinate2D, radius: Double, min: Double, max: Double, mode: Double) -> CLLocationCoordinate2D {
         let random: Double = Double(arc4random()) / Double(UInt32.max)
         let area: Double = (max - min) * (mode - min) / 2
         let randomRadius: Double
         if random < area {
-            randomRadius = min + sqrt(random * (max - min) * (mode - min))
+            randomRadius = radius + min + sqrt(random * (max - min) * (mode - min))
         } else {
-            randomRadius = max - sqrt((1 - random) * (max - min) * (max - mode))
+            randomRadius = radius + max - sqrt((1 - random) * (max - min) * (max - mode))
         }
         let randomAngle: Double = Double.random(in: 0...2*Double.pi)
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
@@ -176,8 +180,11 @@ class DummyUpdateModel {
     }
     
     // Gaussian distribution
+    // TODO:
+    // mean:                min = 0 e max = 2 con passo 0.1
+    // standard_deviation:  min = 0.1 e max = 2 con passo 0.1
     private func generateGaussianNoise(location: CLLocationCoordinate2D, radius: Double, mean: Double, standard_deviation: Double) -> CLLocationCoordinate2D {
-		let randomRadius: Double = mean + standard_deviation * sqrt(-2 * log(Double.random(in: 0...1))) * cos(2 * Double.pi * Double.random(in: 0...1))
+		let randomRadius: Double = (radius + mean) + standard_deviation * sqrt(-2 * log(Double.random(in: 0...1))) * cos(2 * Double.pi * Double.random(in: 0...1))
         let randomAngle: Double = Double.random(in: 0...2*Double.pi)
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
         let y: Double = kilometersToDegreesLongitude(km: randomRadius * sin(randomAngle), latitude: x)
