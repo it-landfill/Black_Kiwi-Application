@@ -98,7 +98,7 @@ struct Location: Identifiable {
     let coordinate: CLLocationCoordinate2D
 }
 
-enum NoiseDistribution {
+enum NoiseDistribution1 {
     case uniform
     case gaussian
     case poisson
@@ -180,7 +180,7 @@ func uniformPointInDisk(radius: Double) -> (Double, Double) {
 }
 
 // Funzione che ritorna una "Location" applicando un determinato rumore alla "userLocation".
-func randomLocationInRadius(userLocation: CLLocationCoordinate2D,_ distribution: NoiseDistribution, radius: Double) -> Location {
+func randomLocationInRadius(userLocation: CLLocationCoordinate2D,_ distribution: NoiseDistribution1, radius: Double) -> Location {
     var deltaLocation : (Double, Double) = (0, 0)
     switch distribution {
     case .uniform:
@@ -201,7 +201,7 @@ func randomLocationInRadius(userLocation: CLLocationCoordinate2D,_ distribution:
     return Location(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
 }
 
-func generateFakeLocations(_ location: CLLocationCoordinate2D,_ distribution: NoiseDistribution,_ dummiesRequested: Int) -> [Location] {
+func generateFakeLocations(_ location: CLLocationCoordinate2D,_ distribution: NoiseDistribution1,_ dummiesRequested: Int) -> [Location] {
     // Number of dummies.
     let maxDummies = 20
     // List of random locations.

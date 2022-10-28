@@ -12,8 +12,24 @@ struct DrawerSettingsView: View {
     @Binding var openSettings: Bool
     @Binding var restHeights: [CGFloat]
     
-    @State private var selectedPrivacyModel: LocationManager.PrivacyModels = LocationManager.PrivacyModels.none
-    @State private var privacyModelOptions: Int = 0
+    @State private var selectedPrivacyModel: Int = 1
+    @State private var numberOfDummies: Float = 0
+    @State private var perturbation: DummyUpdateModel.NoiseDistribution = .triangular
+    @State private var radius: Float = 0.1
+    
+    // Poisson perturbation
+    @State private var lambda: Double = 0
+    
+    // Gaussian perturbation
+    @State private var mean: Double = 0
+    @State private var standardDeviation: Double = 50
+    
+    // Triangular perturbation
+    @State private var min: Double = 0
+    @State private var max: Double = 0
+    @State private var mode: Double = 0
+    
+    
     
     var body: some View {
         VStack {
@@ -38,37 +54,80 @@ struct DrawerSettingsView: View {
             }
             
             List{
-                Section("Privacy options") {
+                Section("Privacy model") {
                     Picker("Privacy model", selection: $selectedPrivacyModel) {
-                        ForEach(LocationManager.PrivacyModels.allCases, id: \.rawValue) {model in
-                            Text(model.rawValue).tag(model)
-                        }
+                        Text("No location distorsion").tag(0)
+                        Text("Location perturbation").tag(1)
+                        Text("Dummy update").tag(2)
                     }
-                    .onChange(of: selectedPrivacyModel) { newModel in
-                        if let encoded = try? JSONEncoder().encode(newModel) {
-                            UserDefaults.standard.set(encoded, forKey: "PrivacyModel")
+                }
+                if (selectedPrivacyModel != 0) {
+                    Section("Privacy model options"){
+                        HStack {
+                            Text("Dummies ")
+                            Slider(value: $numberOfDummies, in: 0...10, step: 1)
+                            Text("\(Int(numberOfDummies))")
                         }
+                        Picker("Perturbation", selection: $perturbation) {
+                            ForEach(DummyUpdateModel.NoiseDistribution.allCases, id: \.rawValue) { distribution in
+                                Text(distribution.rawValue.capitalized).tag(distribution)
+                            }
+                        }
+                        
                     }
-                    
-                    Text(LocationManager.getPrivacyModelInfo(selectedPrivacyModel).description)
-                    if(selectedPrivacyModel == LocationManager.PrivacyModels.B) {
-                        Picker("Model settings", selection: $privacyModelOptions){
-                            Text("Option 1").tag(0)
-                            Text("Option 2").tag(1)
-                            Text("Option 3").tag(2)
+                }
+                if (selectedPrivacyModel != 0 && perturbation != .none){
+                    Section("\(perturbation.rawValue) perturbation options"){
+                        HStack {
+                            Text("Radius ")
+                            Slider(value: $radius, in: 0.1...2, step: 0.1)
+                            if (radius<1) {
+                                Text(String(format: "%.0f m", radius*1000))
+                            } else {
+                                Text(String(format: "%.1f Km", radius))
+                            }
+                        }
+                        if (perturbation == .poisson) {
+                            HStack{
+                                Text("Lambda ")
+                                Slider(value: $lambda, in: 10...20, step: 0.5)
+                                Text(String(format: "%.1f", lambda))
+                            }
+                        }
+                        if (perturbation == .gaussian) {
+                            HStack{
+                                Text("mean ")
+                                Slider(value: $mean, in: 0...20, step: 0.5)
+                                Text(String(format: "%.1f", mean))
+                            }
+                            HStack{
+                                Text("sd ")
+                                Slider(value: $standardDeviation, in: 40...60, step: 0.5)
+                                Text(String(format: "%.1f", standardDeviation))
+                            }
+                        }
+                        if (perturbation == .triangular) {
+                            HStack{
+                                Text("min ")
+                                Slider(value: $min, in: 0...20, step: 1)
+                                Text(String(format: "%.0f", min))
+                            }
+                            HStack{
+                                Text("max ")
+                                Slider(value: $max, in: 200...300, step: 1)
+                                Text(String(format: "%.0f", max))
+                            }
+                            HStack{
+                                Text("mode ")
+                                Slider(value: &mode, in: 100...200, step: 1)
+                                Text(String(format: "%.0f", mode))
+                            }
                         }
                     }
                 }
             }
         }
         Spacer()
-            .onAppear(perform: {
-                if let privacyModData = UserDefaults.standard.object(forKey: "PrivacyModel") as? Data {
-                    if let privacyMod = try? JSONDecoder().decode(LocationManager.PrivacyModels.self, from: privacyModData) {
-                        selectedPrivacyModel = privacyMod
-                    }
-                }
-            })
             .task {
                 await DrawerModel.setHeight(restHeights: $restHeights, height: DrawerModel.heights.mid)
             }

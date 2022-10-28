@@ -10,7 +10,7 @@ import CoreLocation
 
 class DummyUpdateModel {
     
-    enum NoiseDistribution {
+    enum NoiseDistribution: String, CaseIterable {
         case none
         case uniform
         case gaussian
@@ -21,7 +21,6 @@ class DummyUpdateModel {
     // Universal parameter
     let radius: Double
     let numberOfDummies: Int
-    let trueLocation: CLLocationCoordinate2D
     let noiseDistribution: NoiseDistribution
     
     // Poisson parameter
@@ -39,9 +38,8 @@ class DummyUpdateModel {
     // Constructors
     
     // No location distorsion constructor
-    init(trueLocation: CLLocationCoordinate2D) {
+    init() {
         self.noiseDistribution = .none
-        self.trueLocation = trueLocation
         self.radius = 0
         self.numberOfDummies = 0
         self.lambda = 0
@@ -57,7 +55,6 @@ class DummyUpdateModel {
         self.noiseDistribution = .uniform
         self.radius = radius
         self.numberOfDummies = numberOfDummies
-        self.trueLocation = trueLocation
         self.lambda = 0
         self.min = 0
         self.max = 0
@@ -71,7 +68,6 @@ class DummyUpdateModel {
         self.noiseDistribution = .poisson
         self.radius = radius
         self.numberOfDummies = numberOfDummies
-        self.trueLocation = trueLocation
         self.lambda = lambda
         self.min = 0
         self.max = 0
@@ -85,7 +81,6 @@ class DummyUpdateModel {
         self.noiseDistribution = .triangular
         self.radius = radius
         self.numberOfDummies = numberOfDummies
-        self.trueLocation = trueLocation
         self.lambda = 0
         self.min = min
         self.max = max
@@ -99,7 +94,6 @@ class DummyUpdateModel {
         self.noiseDistribution = .gaussian
         self.radius = radius
         self.numberOfDummies = numberOfDummies
-        self.trueLocation = trueLocation
         self.lambda = 0
         self.min = 0
         self.max = 0
@@ -149,7 +143,14 @@ class DummyUpdateModel {
     
     // Poisson distribution
     private func generatePoissonNoise(location: CLLocationCoordinate2D, radius: Double, lambda: Double) -> CLLocationCoordinate2D {
-        let randomRadius: Double = -log(1 - Double.random(in: 0...1)) / lambda
+		let L = exp(-lambda)
+		var p = 1.0
+		var k = 0
+		repeat {
+			k += 1
+			p *= Double.random(in: 0...1)
+		} while p > L
+		let randomRadius: Double = Double(k - 1)
         let randomAngle: Double = Double.random(in: 0...2*Double.pi)
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
         let y: Double = kilometersToDegreesLongitude(km: randomRadius * sin(randomAngle), latitude: x)
@@ -176,7 +177,7 @@ class DummyUpdateModel {
     
     // Gaussian distribution
     private func generateGaussianNoise(location: CLLocationCoordinate2D, radius: Double, mean: Double, standard_deviation: Double) -> CLLocationCoordinate2D {
-        let randomRadius: Double = Double.random(in: 0...radius)
+		let randomRadius: Double = mean + standard_deviation * sqrt(-2 * log(Double.random(in: 0...1))) * cos(2 * Double.pi * Double.random(in: 0...1))
         let randomAngle: Double = Double.random(in: 0...2*Double.pi)
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
         let y: Double = kilometersToDegreesLongitude(km: randomRadius * sin(randomAngle), latitude: x)

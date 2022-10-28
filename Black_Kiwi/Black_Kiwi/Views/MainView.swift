@@ -11,6 +11,7 @@ import Drawer
 struct MainView: View {
     
     @StateObject var locationManager: LocationManager = LocationManager()
+	@StateObject var appSettings: AppSettings = AppSettings()
     
     @State private var restHeights = DrawerModel.defaultHeights
     @State private var selectedPOI: POIModel.Item? = nil
