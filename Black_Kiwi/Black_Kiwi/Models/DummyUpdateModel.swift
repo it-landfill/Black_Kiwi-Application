@@ -11,6 +11,7 @@ import CoreLocation
 class DummyUpdateModel {
     
     enum NoiseDistribution {
+        case none
         case uniform
         case gaussian
         case poisson
@@ -36,6 +37,20 @@ class DummyUpdateModel {
     let standard_deviation: Double
     
     // Constructors
+    
+    // No location distorsion constructor
+    init(trueLocation: CLLocationCoordinate2D) {
+        self.noiseDistribution = .none
+        self.trueLocation = trueLocation
+        self.radius = 0
+        self.numberOfDummies = 0
+        self.lambda = 0
+        self.min = 0
+        self.max = 0
+        self.mode = 0
+        self.mean = 0
+        self.standard_deviation = 0
+    }
     
     // Uniform distribution constructor
     init(radius: Double, numberOfDummies: Int, trueLocation: CLLocationCoordinate2D) {
@@ -97,6 +112,8 @@ class DummyUpdateModel {
     func generateFakeLocations(location: CLLocationCoordinate2D,distribution: NoiseDistribution, dummiesRequested: Int, radius: Double) -> [CLLocationCoordinate2D]{
         var dummies: [CLLocationCoordinate2D] = []
         switch distribution {
+        case .none:
+            dummies.append(location)
         case .uniform:
             for _ in 0...dummiesRequested {
                 dummies.append(generateUniformNoise(location: location, radius: radius))
@@ -142,9 +159,14 @@ class DummyUpdateModel {
     
     // Triangular distribution
     private func generateTriangularNoise(location: CLLocationCoordinate2D, radius: Double, min: Double, max: Double, mode: Double) -> CLLocationCoordinate2D {
-		let random = Double(arc4random()) / Double(UInt32.max)
-		
-        let randomRadius: Double = Double.random(in: 0...radius)
+        let random: Double = Double(arc4random()) / Double(UInt32.max)
+        let area: Double = (max - min) * (mode - min) / 2
+        let randomRadius: Double
+        if random < area {
+            randomRadius = min + sqrt(random * (max - min) * (mode - min))
+        } else {
+            randomRadius = max - sqrt((1 - random) * (max - min) * (max - mode))
+        }
         let randomAngle: Double = Double.random(in: 0...2*Double.pi)
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
         let y: Double = kilometersToDegreesLongitude(km: randomRadius * sin(randomAngle), latitude: x)
