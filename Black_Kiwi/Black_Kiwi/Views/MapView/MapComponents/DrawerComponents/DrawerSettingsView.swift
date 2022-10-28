@@ -9,12 +9,14 @@ import SwiftUI
 
 struct DrawerSettingsView: View {
     
+    //TODO: Set default values for perturbation options
+    // TODO: Apply button
     @Binding var openSettings: Bool
     @Binding var restHeights: [CGFloat]
     
-    @State private var selectedPrivacyModel: Int = 1
+    @State private var selectedPrivacyModel: Int = 0
     @State private var numberOfDummies: Float = 0
-    @State private var perturbation: DummyUpdateModel.NoiseDistribution = .triangular
+    @State private var perturbation: DummyUpdateModel.NoiseDistribution = .uniform
     @State private var radius: Float = 0.1
     
     // Poisson perturbation
@@ -119,7 +121,7 @@ struct DrawerSettingsView: View {
                             }
                             HStack{
                                 Text("mode ")
-                                Slider(value: &mode, in: 100...200, step: 1)
+                                Slider(value: $mode, in: 100...200, step: 1)
                                 Text(String(format: "%.0f", mode))
                             }
                         }
