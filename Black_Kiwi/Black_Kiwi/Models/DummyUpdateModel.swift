@@ -150,7 +150,7 @@ class DummyUpdateModel {
 			k += 1
 			p *= Double.random(in: 0...1)
 		} while p > L
-		let randomRadius: Double = sqrt(Double(k - 1))
+		let randomRadius: Double = radiusCalibration(oldMaxRadius: radius, newMaxRadius:  poissonMaxBound(lambda: lambda), actualRadius: Double(k - 1))
         let randomAngle: Double = Double.random(in: 0...2*Double.pi)
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
         let y: Double = kilometersToDegreesLongitude(km: randomRadius * sin(randomAngle), latitude: x)
@@ -164,11 +164,11 @@ class DummyUpdateModel {
         let area: Double = (max - min) * (mode - min) / 2
         let randomRadius: Double
         if random < area {
-            randomRadius = radius + min + sqrt(random * (max - min) * (mode - min))
+            randomRadius =  min + sqrt(random * (max - min) * (mode - min))
         } else {
-            randomRadius = radius + max - sqrt((1 - random) * (max - min) * (max - mode))
+            randomRadius =  max - sqrt((1 - random) * (max - min) * (max - mode))
         }
-        let randomAngle: Double = Double.random(in: 0...2*Double.pi)
+        let randomAngle: Double = radiusCalibration(oldMaxRadius: radius, newMaxRadius:  max, actualRadius: Double.random(in: 0...2*Double.pi))
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
         let y: Double = kilometersToDegreesLongitude(km: randomRadius * sin(randomAngle), latitude: x)
         let newLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: location.latitude + x, longitude: location.longitude + y)
@@ -177,7 +177,7 @@ class DummyUpdateModel {
     
     // Gaussian distribution
     private func generateGaussianNoise(location: CLLocationCoordinate2D, radius: Double, mean: Double, standard_deviation: Double) -> CLLocationCoordinate2D {
-		let randomRadius: Double = (radius + mean) + standard_deviation * sqrt(-2 * log(Double.random(in: 0...1))) * cos(2 * Double.pi * Double.random(in: 0...1))
+		let randomRadius: Double =  radiusCalibration(oldMaxRadius: radius, newMaxRadius:  max, actualRadius: abs(mean + standard_deviation * sqrt(-2 * log(Double.random(in: 0...1))) * cos(2 * Double.pi * Double.random(in: 0...1))))
         let randomAngle: Double = Double.random(in: 0...2*Double.pi)
         let x: Double = kilometersToDegreesLatitude(km: randomRadius * cos(randomAngle))
         let y: Double = kilometersToDegreesLongitude(km: randomRadius * sin(randomAngle), latitude: x)
@@ -196,4 +196,15 @@ class DummyUpdateModel {
         return km / (111.111 * cos(latitude * Double.pi / 180))
     }
     
+    private func radiusCalibration(oldMaxRadius: Double, newMaxRadius: Double, actualRadius: Double) -> Double {
+        return (actualRadius * newMaxRadius) / oldMaxRadius
+    }
+    
+    private func poissonMaxBound(lambda: Double) -> Double {
+        return lambda + 3 * sqrt(lambda)
+    }
+    
+    private func gaussianMaxBound(mean: Double, std: Double) -> Double {
+        return mean + 3 * std
+    }
 }
