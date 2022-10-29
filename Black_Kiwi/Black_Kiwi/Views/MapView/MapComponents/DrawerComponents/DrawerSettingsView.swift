@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DrawerSettingsView: View {
     
-    //TODO: Set default values for perturbation options
+    // TODO: Set default values for perturbation options
     // TODO: Apply button
     @Binding var openSettings: Bool
     @Binding var restHeights: [CGFloat]
@@ -20,11 +20,11 @@ struct DrawerSettingsView: View {
     @State private var radius: Float = 0.1
     
     // Poisson perturbation
-    @State private var lambda: Double = 0
+    @State private var lambda: Double = 0.5
     
     // Gaussian perturbation
     @State private var mean: Double = 0
-    @State private var standardDeviation: Double = 50
+    @State private var standardDeviation: Double = 0.1
     
     // Triangular perturbation
     @State private var min: Double = 0
@@ -89,40 +89,49 @@ struct DrawerSettingsView: View {
                                 Text(String(format: "%.1f Km", radius))
                             }
                         }
+                        // Parametri gaussian distribution:
+                        // lambda:  min = 0.5 e max = 10 con passo 0.5
                         if (perturbation == .poisson) {
                             HStack{
                                 Text("Lambda ")
-                                Slider(value: $lambda, in: 10...20, step: 0.5)
+                                Slider(value: $lambda, in: 0.5...10, step: 0.5)
                                 Text(String(format: "%.1f", lambda))
                             }
                         }
+                        // Parametri gaussian distribution:
+                        // mean:                min = 0 e max = 2 con passo 0.1
+                        // standard_deviation:  min = 0.1 e max = 2 con passo 0.1
                         if (perturbation == .gaussian) {
                             HStack{
                                 Text("mean ")
-                                Slider(value: $mean, in: 0...20, step: 0.5)
+                                Slider(value: $mean, in: 0...2, step: 0.1)
                                 Text(String(format: "%.1f", mean))
                             }
                             HStack{
                                 Text("sd ")
-                                Slider(value: $standardDeviation, in: 40...60, step: 0.5)
+                                Slider(value: $standardDeviation, in: 0.1...2, step: 0.1)
                                 Text(String(format: "%.1f", standardDeviation))
                             }
                         }
+                        // Parametri triangular distribution:
+                        // min:     min = 0 e max = 2 con passo 0.2
+                        // max:     min = 0 e max = 4 con passo 0.2
+                        // mode:    min = 0 e max = 4 con passo 0.2
                         if (perturbation == .triangular) {
                             HStack{
                                 Text("min ")
-                                Slider(value: $min, in: 0...20, step: 1)
-                                Text(String(format: "%.0f", min))
+                                Slider(value: $min, in: 0...2, step: 0.2)
+                                Text(String(format: "%.1f", min))
                             }
                             HStack{
                                 Text("max ")
-                                Slider(value: $max, in: 200...300, step: 1)
-                                Text(String(format: "%.0f", max))
+                                Slider(value: $max, in: 0...4, step: 0.2)
+                                Text(String(format: "%.1f", max))
                             }
                             HStack{
                                 Text("mode ")
-                                Slider(value: $mode, in: 100...200, step: 1)
-                                Text(String(format: "%.0f", mode))
+                                Slider(value: $mode, in: 0...4, step: 0.2)
+                                Text(String(format: "%.1f", mode))
                             }
                         }
                     }
