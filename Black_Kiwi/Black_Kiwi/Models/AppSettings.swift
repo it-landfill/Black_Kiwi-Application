@@ -8,12 +8,12 @@
 import Foundation
 
 class AppSettings: ObservableObject {
-	let LocationPrivacyModel: DummyUpdateModel
+	var locationPrivacyModel: DummyUpdateModel
     
     init() {
-        self.LocationPrivacyModel = DummyUpdateModel()
+        self.locationPrivacyModel = DummyUpdateModel()
     }
-    init(LocationPrivacyModel: DummyUpdateModel) {
-        self.LocationPrivacyModel = LocationPrivacyModel
+    init(locationPrivacyModel: DummyUpdateModel) {
+        self.locationPrivacyModel = locationPrivacyModel
     }
 }

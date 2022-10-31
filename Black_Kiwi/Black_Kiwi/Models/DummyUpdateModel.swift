@@ -8,9 +8,9 @@
 import Foundation
 import CoreLocation
 
-class DummyUpdateModel {
+class DummyUpdateModel: Codable {
     
-    enum NoiseDistribution: String, CaseIterable {
+    enum NoiseDistribution: String, CaseIterable, Codable {
         case none
         case uniform
         case gaussian
@@ -40,14 +40,14 @@ class DummyUpdateModel {
     // No location distorsion constructor
     init() {
         self.noiseDistribution = .none
-        self.radius = 0
+        self.radius = 0.1
         self.numberOfDummies = 0
-        self.lambda = 0
+        self.lambda = 0.5
         self.min = 0
         self.max = 0
         self.mode = 0
         self.mean = 0
-        self.standard_deviation = 0
+        self.standard_deviation = 0.1
     }
     
     // Uniform distribution constructor
@@ -102,26 +102,39 @@ class DummyUpdateModel {
         self.standard_deviation = standard_deviation
     }
     
+    // All param constructor (Used to load saved model)
+    init(radius: Double, numberOfDummies: Int, noiseDistribution: NoiseDistribution, lambda: Double, min: Double, max: Double, mode: Double, mean: Double, standard_deviation: Double) {
+		self.radius = radius
+		self.numberOfDummies = numberOfDummies
+		self.noiseDistribution = noiseDistribution
+		self.lambda = lambda
+		self.min = min
+		self.max = max
+		self.mode = mode
+		self.mean = mean
+		self.standard_deviation = standard_deviation
+	}
+    
     // Exported function
-    func generateFakeLocations(location: CLLocationCoordinate2D,distribution: NoiseDistribution, dummiesRequested: Int, radius: Double) -> [CLLocationCoordinate2D]{
+    func generateFakeLocations(location: CLLocationCoordinate2D) -> [CLLocationCoordinate2D]{
         var dummies: [CLLocationCoordinate2D] = []
-        switch distribution {
+        switch noiseDistribution {
         case .none:
             dummies.append(location)
         case .uniform:
-            for _ in 0...dummiesRequested {
+            for _ in 0...numberOfDummies {
                 dummies.append(generateUniformNoise(location: location, radius: radius))
             }
         case .poisson:
-            for _ in 0...dummiesRequested {
+            for _ in 0...numberOfDummies {
                 dummies.append(generatePoissonNoise(location: location, radius: radius, lambda: lambda))
             }
         case .gaussian:
-            for _ in 0...dummiesRequested {
+            for _ in 0...numberOfDummies {
                 dummies.append(generateGaussianNoise(location: location, radius: radius, mean: mean, standard_deviation: standard_deviation))
             }
         case .triangular:
-            for _ in 0...dummiesRequested {
+            for _ in 0...numberOfDummies {
                 dummies.append(generateTriangularNoise(location: location, radius: radius, min: min, max: max, mode: mode))
             }
         }

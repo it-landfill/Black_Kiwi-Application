@@ -30,6 +30,7 @@ struct MainView: View {
             .padding(.leading,10)
         }
         .environmentObject(locationManager)
+        .environmentObject(appSettings)
     }
 }
 

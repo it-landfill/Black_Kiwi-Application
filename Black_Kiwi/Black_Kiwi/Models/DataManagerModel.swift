@@ -48,7 +48,7 @@ class DataManager {
         return POIModel.Item(name: response.name, category: category, coordinate: CLLocationCoordinate2D(latitude: response.coord.latitude, longitude: response.coord.longitude), rank: 1)
     }
     
-    static func getReccomendations(position: CLLocationCoordinate2D, category: POIModel.CategoryTypes?, minRank: Int, limit: Int?) async -> [POIModel.Item]? {
+    static func getReccomendations(position: [CLLocationCoordinate2D], category: POIModel.CategoryTypes?, minRank: Int, limit: Int?) async -> [POIModel.Item]? {
         
         guard var url = URLComponents(string: "\(baseURL)/getRecommendation") else {
             print("Invalid URL")
@@ -56,15 +56,9 @@ class DataManager {
         }
         
         let rankStr = String(minRank)
-        let latStr = String(position.latitude)
-        let lonStr = String(position.longitude)
-        
-        print("New poi recommendation request. minRank: \(rankStr), lat: \(latStr), lon: \(lonStr).")
         
         url.queryItems = [
             URLQueryItem(name: "minRank", value: rankStr),
-            URLQueryItem(name: "latitude", value: latStr),
-            URLQueryItem(name: "longitude", value: lonStr),
         ]
         
         if let category = category {
@@ -77,6 +71,24 @@ class DataManager {
             let limitStr = String(limit)
             print("limit: \(limitStr)")
             url.queryItems?.append(URLQueryItem(name: "limit", value: limitStr))
+        }
+        
+        
+        if (position.count == 1) {
+            // No privacy or single perturbation
+            if let firstElem = position.first {
+                let latStr = String(firstElem.latitude)
+                let lonStr = String(firstElem.longitude)
+                
+                url.queryItems?.append(URLQueryItem(name: "latitude", value: latStr))
+                url.queryItems?.append(URLQueryItem(name: "longitude", value: lonStr))
+                print("New poi recommendation request. minRank: \(rankStr), lat: \(latStr), lon: \(lonStr).")
+                
+            }
+        } else if (position.count > 1) {
+            // TODO: Gestire il caso di dummy update
+        } else {
+            // TODO: Errore, nessuna location trovata
         }
         
         guard let composedURL = url.url else {

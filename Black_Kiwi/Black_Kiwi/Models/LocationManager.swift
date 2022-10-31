@@ -53,8 +53,11 @@ class LocationManager: NSObject, ObservableObject {
         return getLocation()?.coordinate ?? nil
     }
     
-    func getCoordinatesWithNoise() -> CLLocationCoordinate2D?{
-        return getLocation()?.coordinate ?? nil
+    func getCoordinatesWithNoise(dummyUpdateModel: DummyUpdateModel) -> [CLLocationCoordinate2D]?{
+        if let location = getCoordinates() {
+            return dummyUpdateModel.generateFakeLocations(location: location)
+        }
+        return nil
     }
     
     func getLocation() -> CLLocation?{
