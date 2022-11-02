@@ -41,13 +41,17 @@ struct SearchView: View {
                     showSheet = false
                     Task {
                         if let curLocs = locationManager.getCoordinatesWithNoise(dummyUpdateModel: appSettings.locationPrivacyModel) {
-                            let poiList = await DataManager.getReccomendations(position: curLocs, category: poiCat, minRank: Int(minRank), limit: nil)
+							if let trueLoc = locationManager.getCoordinates() {
+                            let poiList = await DataManager.getReccomendations(positions: curLocs, truePosition: trueLoc, category: poiCat, minRank: Int(minRank), limit: nil)
                             if let poiList = poiList {
                                 UIMapView.deletePOIs()
                                 UIMapView.updatePOIs(POIList: poiList)
                             } else {
                                 print("Unable to get POI list for search")
                             }
+							} else {
+                            print("Unable to get current location for search")
+                        }
                         } else {
                             print("Unable to get current location for search")
                         }
