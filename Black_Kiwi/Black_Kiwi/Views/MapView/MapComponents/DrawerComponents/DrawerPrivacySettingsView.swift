@@ -10,7 +10,7 @@ import SwiftUI
 struct DrawerPrivacySettingsView: View {
     
     @State private var selectedPrivacyModel: Int = 0
-    @State private var numberOfDummies: Float = 0
+    @State private var numberOfDummies: Float = 2
     @State private var perturbation: DummyUpdateModel.NoiseDistribution = .uniform
     @State private var radius: Double = 0.1
     
@@ -43,7 +43,7 @@ struct DrawerPrivacySettingsView: View {
                         if (selectedPrivacyModel == 2) {
                             HStack {
                                 Text("Dummies ")
-                                Slider(value: $numberOfDummies, in: 0...10, step: 1)
+                                Slider(value: $numberOfDummies, in: 2...10, step: 1)
                                 Text("\(Int(numberOfDummies))")
                             }
                         }

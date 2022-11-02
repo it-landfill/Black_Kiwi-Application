@@ -41,7 +41,7 @@ class DummyUpdateModel: Codable {
     init() {
         self.noiseDistribution = .none
         self.radius = 0.1
-        self.numberOfDummies = 0
+        self.numberOfDummies = 2 // Exclude location perturbation and no perturbation
         self.lambda = 0.5
         self.min = 0
         self.max = 0
