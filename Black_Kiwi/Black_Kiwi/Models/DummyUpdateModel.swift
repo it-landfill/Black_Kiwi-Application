@@ -122,19 +122,19 @@ class DummyUpdateModel: Codable {
         case .none:
             dummies.append(location)
         case .uniform:
-            for _ in 0...numberOfDummies {
+            for _ in 0..<numberOfDummies {
                 dummies.append(generateUniformNoise(location: location, radius: radius))
             }
         case .poisson:
-            for _ in 0...numberOfDummies {
+            for _ in 0..<numberOfDummies {
                 dummies.append(generatePoissonNoise(location: location, radius: radius, lambda: lambda))
             }
         case .gaussian:
-            for _ in 0...numberOfDummies {
+            for _ in 0..<numberOfDummies {
                 dummies.append(generateGaussianNoise(location: location, radius: radius, mean: mean, standard_deviation: standard_deviation))
             }
         case .triangular:
-            for _ in 0...numberOfDummies {
+            for _ in 0..<numberOfDummies {
                 dummies.append(generateTriangularNoise(location: location, radius: radius, min: min, max: max, mode: mode))
             }
         }
