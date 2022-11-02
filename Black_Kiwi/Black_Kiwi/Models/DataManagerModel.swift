@@ -11,8 +11,8 @@ import SwiftUI
 
 class DataManager {
     
-    //private static let baseURL = "http://casadiale.noip.me:62950"
-    private static let baseURL = "http://127.0.0.1:8080"
+    private static let baseURL = "http://casadiale.noip.me:62950"
+    // private static let baseURL = "http://127.0.0.1:8080"
     
     struct responseCoordinates: Codable {
         let latitude: Double
@@ -50,6 +50,8 @@ class DataManager {
     
     static func getReccomendations(dummyPositions: [CLLocationCoordinate2D], truePosition: CLLocationCoordinate2D, category: POIModel.CategoryTypes?, minRank: Int, limit: Int?) async -> [POIModel.Item]? {
         
+        var dummyPositions = dummyPositions;
+        
         guard var baseURL: URLComponents = URLComponents(string: "\(baseURL)/getRecommendation") else {
             print("Invalid URL")
             return nil
@@ -81,14 +83,15 @@ class DataManager {
         var truePosIndex: Int = 0;
 
 		// If the dummy position list has more than 1 dummy, replace a random one with the real location and save the index in truePosIndex
-		if dummyPositions.count() > 1 {
-			truePosIndex = Int.random(in: 1..<dummyPositions.count())
-			dummyPositions[truePosIndex] = truePosition
+        if dummyPositions.count > 1 {
+            truePosIndex = Int.random(in: 1..<dummyPositions.count)
+            dummyPositions[truePosIndex] = truePosition
 		}
         
 		// Loop each location and request POI to the server
-        for (index: Int, item: CLLocationCoordinate2D) in dummyPositions.enumerated() {
-            
+        // for (index: Int, item: CLLocationCoordinate2D) in dummyPositions.enumerated() {
+        for  index in 0 ..< dummyPositions.count {
+            let item = dummyPositions[index]
             // Compose the URL with the current location element
             var url: URLComponents = baseURL
             let latStr: String = String(item.latitude)

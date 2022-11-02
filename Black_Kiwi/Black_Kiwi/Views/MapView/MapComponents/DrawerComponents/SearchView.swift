@@ -42,7 +42,7 @@ struct SearchView: View {
                     Task {
                         if let curLocs = locationManager.getCoordinatesWithNoise(dummyUpdateModel: appSettings.locationPrivacyModel) {
 							if let trueLoc = locationManager.getCoordinates() {
-                            let poiList = await DataManager.getReccomendations(positions: curLocs, truePosition: trueLoc, category: poiCat, minRank: Int(minRank), limit: nil)
+                            let poiList = await DataManager.getReccomendations(dummyPositions: curLocs, truePosition: trueLoc, category: poiCat, minRank: Int(minRank), limit: nil)
                             if let poiList = poiList {
                                 UIMapView.deletePOIs()
                                 UIMapView.updatePOIs(POIList: poiList)
