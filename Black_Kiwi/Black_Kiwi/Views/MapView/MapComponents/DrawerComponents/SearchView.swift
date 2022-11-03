@@ -12,6 +12,7 @@ struct SearchView: View {
     @State private var minRank: Float = 5
     @State private var poiCat: POIModel.CategoryTypes = POIModel.CategoryTypes.department
     @EnvironmentObject private var locationManager: LocationManager
+    @EnvironmentObject private var appSettings: AppSettings
     
     @Binding var showSheet: Bool
     
@@ -39,14 +40,18 @@ struct SearchView: View {
                 Button(action: {
                     showSheet = false
                     Task {
-                        if let curLoc = locationManager.getCoordinatesWithNoise() {
-                            let poiList = await DataManager.getReccomendations(position: curLoc, category: poiCat, minRank: Int(minRank), limit: nil)
+                        if let curLocs = locationManager.getCoordinatesWithNoise(dummyUpdateModel: appSettings.locationPrivacyModel) {
+							if let trueLoc = locationManager.getCoordinates() {
+                            let poiList = await DataManager.getReccomendations(dummyPositions: curLocs, truePosition: trueLoc, category: poiCat, minRank: Int(minRank), limit: nil)
                             if let poiList = poiList {
                                 UIMapView.deletePOIs()
                                 UIMapView.updatePOIs(POIList: poiList)
                             } else {
                                 print("Unable to get POI list for search")
                             }
+							} else {
+                            print("Unable to get current location for search")
+                        }
                         } else {
                             print("Unable to get current location for search")
                         }

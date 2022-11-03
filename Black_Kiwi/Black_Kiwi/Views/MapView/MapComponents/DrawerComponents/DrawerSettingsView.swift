@@ -9,14 +9,33 @@ import SwiftUI
 
 struct DrawerSettingsView: View {
     
+    // TODO: Set default values for perturbation options
+    // TODO: Apply button
     @Binding var openSettings: Bool
     @Binding var restHeights: [CGFloat]
     
-    @State private var selectedPrivacyModel: LocationManager.PrivacyModels = LocationManager.PrivacyModels.none
-    @State private var privacyModelOptions: Int = 0
+    @State private var selectedPrivacyModel: Int = 0
+    @State private var numberOfDummies: Float = 0
+    @State private var perturbation: DummyUpdateModel.NoiseDistribution = .uniform
+    @State private var radius: Float = 0.1
+    
+    // Poisson perturbation
+    @State private var lambda: Double = 0.5
+    
+    // Gaussian perturbation
+    @State private var mean: Double = 0
+    @State private var standardDeviation: Double = 0.1
+    
+    // Triangular perturbation
+    @State private var min: Double = 0
+    @State private var max: Double = 0
+    @State private var mode: Double = 0
+    
+    
     
     var body: some View {
         VStack {
+            // Top bar text and icon
             ZStack {
                 HStack {
                     Spacer()
@@ -37,41 +56,20 @@ struct DrawerSettingsView: View {
                 }
             }
             
-            List{
-                Section("Privacy options") {
-                    Picker("Privacy model", selection: $selectedPrivacyModel) {
-                        ForEach(LocationManager.PrivacyModels.allCases, id: \.rawValue) {model in
-                            Text(model.rawValue).tag(model)
-                        }
-                    }
-                    .onChange(of: selectedPrivacyModel) { newModel in
-                        if let encoded = try? JSONEncoder().encode(newModel) {
-                            UserDefaults.standard.set(encoded, forKey: "PrivacyModel")
-                        }
-                    }
-                    
-                    Text(LocationManager.getPrivacyModelInfo(selectedPrivacyModel).description)
-                    if(selectedPrivacyModel == LocationManager.PrivacyModels.B) {
-                        Picker("Model settings", selection: $privacyModelOptions){
-                            Text("Option 1").tag(0)
-                            Text("Option 2").tag(1)
-                            Text("Option 3").tag(2)
-                        }
+            NavigationView {
+                List{
+                    NavigationLink(destination: DrawerPrivacySettingsView()) {
+                        Text("Privacy Settings")
                     }
                 }
             }
+            
+            Spacer()
+            
         }
-        Spacer()
-            .onAppear(perform: {
-                if let privacyModData = UserDefaults.standard.object(forKey: "PrivacyModel") as? Data {
-                    if let privacyMod = try? JSONDecoder().decode(LocationManager.PrivacyModels.self, from: privacyModData) {
-                        selectedPrivacyModel = privacyMod
-                    }
-                }
-            })
-            .task {
-                await DrawerModel.setHeight(restHeights: $restHeights, height: DrawerModel.heights.mid)
-            }
+        .task {
+            await DrawerModel.setHeight(restHeights: $restHeights, height: DrawerModel.heights.high)
+        }
     }
 }
 
