@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FF12068A290BE61A00C48DA6 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF120689290BE61A00C48DA6 /* AppSettings.swift */; };
+		FF39DD562913C16900BF6774 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF39DD552913C16900BF6774 /* LoginView.swift */; };
 		FF5781DF291019FD002C2DA5 /* DrawerPrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */; };
 		FF586A9628BF6B8C00755E5A /* PermissionsSwiftUILocation in Frameworks */ = {isa = PBXBuildFile; productRef = FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */; };
 		FF611B9528EC3509003DD3BA /* DrawerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF611B9428EC3509003DD3BA /* DrawerModel.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		FF0D673528FD7D360029B459 /* Black-Kiwi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Black-Kiwi-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FF120689290BE61A00C48DA6 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		FF39DD552913C16900BF6774 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPrivacySettingsView.swift; sourceTree = "<group>"; };
 		FF611B9428EC3509003DD3BA /* DrawerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerModel.swift; sourceTree = "<group>"; };
 		FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTypeButton.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				FFF1B80428A8E829002DD26D /* WIPView.swift */,
 				FFB0208828EC7FE8004B9E4F /* MainView.swift */,
 				FFD52B9F28F9C616003F1D0A /* testLocation.swift */,
+				FF39DD552913C16900BF6774 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				FF5781DF291019FD002C2DA5 /* DrawerPrivacySettingsView.swift in Sources */,
 				FFC7BDBF28C72B7F003AA521 /* DrawerBaseComponent.swift in Sources */,
 				FFB0646F28C0B09400283CF3 /* LocationManager.swift in Sources */,
+				FF39DD562913C16900BF6774 /* LoginView.swift in Sources */,
 				FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */,
 				FFBF673028E9F19200C0A757 /* DrawerSettingsView.swift in Sources */,
 				FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */,
@@ -563,6 +567,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Black-Kiwi-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Black Kiwi";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Location access is needed in order to show user location and provide nearby recommendations.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -593,6 +599,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Black-Kiwi-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Black Kiwi";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Location access is needed in order to show user location and provide nearby recommendations.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

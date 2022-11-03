@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct Black_KiwiApp: App {
+    @State private var ajeje = LoginView.AuthenticationStatus.notAuthenticated
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            //MainView()
             // testLocation()
+            LoginView(authenticationStatus: $ajeje)
         }
     }
 }
