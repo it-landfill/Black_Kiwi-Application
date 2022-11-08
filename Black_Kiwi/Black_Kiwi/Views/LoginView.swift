@@ -67,7 +67,7 @@ struct LoginView: View {
                     .background(lightGreyColor)
                     .cornerRadius(5.0)
                     .padding(.bottom, 20)
-    
+                
                 
                 if authenticationStatus == .failed {
                     Text("Information not correct. Try again.")
@@ -81,13 +81,37 @@ struct LoginView: View {
                         authenticationStatus = .failed
                     }
                 }) {
-                    Text("LOGIN")
-                        .font(.headline)
+                    switch (authenticationStatus) {
+                    case .notAuthenticated, .guest:
+                        Text("LOGIN")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 220, height: 60)
+                            .background(Color.green)
+                            .cornerRadius(15.0)
+                    case .failed:
+                        Text("RETRY")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 220, height: 60)
+                            .background(Color.red)
+                            .cornerRadius(15.0)
+                    case .inProgress, .authenticated:
+                        HStack {
+                            Text("LOGGING IN")
+                                .font(.headline)
+                            ProgressView(value: 5)
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .padding(.leading)
+                        }
                         .foregroundColor(.white)
                         .padding()
                         .frame(width: 220, height: 60)
                         .background(Color.green)
                         .cornerRadius(15.0)
+                    }
                 }
             }
             .padding()
