@@ -75,6 +75,8 @@ struct LoginView: View {
                         .foregroundColor(.red)
                 }
                 Button(action: {
+                    let loginStatus = LoginManagerModel.loginUser(credentials: LoginManagerModel.LoginRequest(username: username, password: password))
+                    print(loginStatus)
                     if username == storedUsername && password == storedPassword {
                         authenticationStatus = .authenticated
                     } else {
@@ -102,7 +104,7 @@ struct LoginView: View {
                         HStack {
                             Text("LOGGING IN")
                                 .font(.headline)
-                            ProgressView(value: 5)
+                            ProgressView(value: 0.5)
                                 .progressViewStyle(CircularProgressViewStyle())
                                 .padding(.leading)
                         }
