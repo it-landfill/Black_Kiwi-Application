@@ -9,9 +9,6 @@ import SwiftUI
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
 
-let storedUsername = "ajeje"
-let storedPassword = "brazof"
-
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
@@ -20,15 +17,11 @@ struct LoginView: View {
     @State private var authenticationDidSucceed: Bool = false
     
     @State private var editingMode: Bool = false
+    @State private var errorMessage: String = ""
     
-    enum AuthenticationStatus: String, Codable, CaseIterable {
-        case notAuthenticated
-        case guest // TODO: Extra feature?
-        case inProgress
-        case failed
-        case authenticated
-    }
-    @Binding var authenticationStatus: AuthenticationStatus
+    @Binding var authenticationStatus: LoginManagerModel.AuthenticationStatus
+    
+    @EnvironmentObject private var appSettings: AppSettings
     
     var body: some View {
         
@@ -69,18 +62,16 @@ struct LoginView: View {
                     .padding(.bottom, 20)
                 
                 
-                if authenticationStatus == .failed {
-                    Text("Information not correct. Try again.")
+                if authenticationStatus == .failed && errorMessage != "" {
+                    Text(errorMessage)
                         .offset(y: -10)
                         .foregroundColor(.red)
                 }
                 Button(action: {
-                    let loginStatus = LoginManagerModel.loginUser(credentials: LoginManagerModel.LoginRequest(username: username, password: password))
-                    print(loginStatus)
-                    if username == storedUsername && password == storedPassword {
-                        authenticationStatus = .authenticated
-                    } else {
-                        authenticationStatus = .failed
+                    let loginStatus = LoginManagerModel.loginUser(authenticationStatus: $authenticationStatus, errorMessage: $errorMessage, credentials: LoginManagerModel.LoginRequest(username: username, password: password, role: 1))
+                    print(loginStatus ?? "[ERROR] Login status is nil :(")
+                    if let loginStatus = loginStatus {
+                        appSettings.apiToken = loginStatus.token
                     }
                 }) {
                     switch (authenticationStatus) {
@@ -135,6 +126,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticationStatus: .constant(LoginView.AuthenticationStatus.notAuthenticated))
+        LoginView(authenticationStatus: .constant(LoginManagerModel.AuthenticationStatus.notAuthenticated))
     }
 }
