@@ -48,11 +48,12 @@ class DataManager {
         return POIModel.Item(name: response.name, category: category, coordinate: CLLocationCoordinate2D(latitude: response.coord.latitude, longitude: response.coord.longitude), rank: 1)
     }
     
-    static func getReccomendations(dummyPositions: [CLLocationCoordinate2D], truePosition: CLLocationCoordinate2D, category: POIModel.CategoryTypes?, minRank: Int, limit: Int?) async -> [POIModel.Item]? {
+    static func getReccomendations(apiToken: String, dummyPositions: [CLLocationCoordinate2D], truePosition: CLLocationCoordinate2D, category: POIModel.CategoryTypes?, minRank: Int, limit: Int?) async -> [POIModel.Item]? {
         
         var dummyPositions = dummyPositions;
         
-        guard var baseURL: URLComponents = URLComponents(string: "\(baseURL)/getRecommendation") else {
+        //TODO: Rifare con Alamo?
+        guard var baseURL: URLComponents = URLComponents(string: "\(baseURL)/mobile/getRecommendation") else {
             print("Invalid URL")
             return nil
         }
