@@ -7,8 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF217D2328BA6A4C001DE287 /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = FF217D2228BA6A4C001DE287 /* Map */; };
+		FF12068A290BE61A00C48DA6 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF120689290BE61A00C48DA6 /* AppSettings.swift */; };
+		FF39DD562913C16900BF6774 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF39DD552913C16900BF6774 /* LoginView.swift */; };
+		FF5781DF291019FD002C2DA5 /* DrawerPrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */; };
+		FF586A9628BF6B8C00755E5A /* PermissionsSwiftUILocation in Frameworks */ = {isa = PBXBuildFile; productRef = FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */; };
+		FF611B9528EC3509003DD3BA /* DrawerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF611B9428EC3509003DD3BA /* DrawerModel.swift */; };
+		FF73FCAC28C5DED6005E7EC5 /* MapTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */; };
+		FF73FCAE28C5DF4E005E7EC5 /* LocationToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */; };
+		FF73FCB028C5E0E7005E7EC5 /* LocationModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */; };
+		FF9BB2DC28F4614200A16FCC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BB2DB28F4614200A16FCC /* SearchView.swift */; };
+		FFA777D828F96D89004EEFD9 /* DataManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA777D728F96D89004EEFD9 /* DataManagerModel.swift */; };
+		FFB0208928EC7FE8004B9E4F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0208828EC7FE8004B9E4F /* MainView.swift */; };
+		FFB0646F28C0B09400283CF3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0646E28C0B09400283CF3 /* LocationManager.swift */; };
+		FFBF673028E9F19200C0A757 /* DrawerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF672F28E9F19100C0A757 /* DrawerSettingsView.swift */; };
+		FFC7BDBF28C72B7F003AA521 /* DrawerBaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7BDBE28C72B7F003AA521 /* DrawerBaseComponent.swift */; };
+		FFC7BDC128C72BB0003AA521 /* DrawerPOIInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7BDC028C72BB0003AA521 /* DrawerPOIInfo.swift */; };
 		FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFCEB05028B3DAD500369F39 /* Drawer */; };
+		FFD323A5290BDC2800BC9BCC /* DummyUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD323A4290BDC2800BC9BCC /* DummyUpdateModel.swift */; };
+		FFD52BA028F9C616003F1D0A /* testLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD52B9F28F9C616003F1D0A /* testLocation.swift */; };
+		FFF0A57A291AB7B100ED2970 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FFF0A579291AB7B100ED2970 /* Alamofire */; };
+		FFF0A57D291AB7D200ED2970 /* LoginManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF0A57C291AB7D200ED2970 /* LoginManagerModel.swift */; };
 		FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */; };
 		FFF1B7DD28A8E799002DD26D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF1B7DC28A8E799002DD26D /* Assets.xcassets */; };
 		FFF1B7E028A8E799002DD26D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF1B7DF28A8E799002DD26D /* Preview Assets.xcassets */; };
@@ -16,16 +34,11 @@
 		FFF1B7F428A8E799002DD26D /* Black_KiwiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7F328A8E799002DD26D /* Black_KiwiUITests.swift */; };
 		FFF1B7F628A8E799002DD26D /* Black_KiwiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7F528A8E799002DD26D /* Black_KiwiUITestsLaunchTests.swift */; };
 		FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80428A8E829002DD26D /* WIPView.swift */; };
-		FFF1B80828A8E865002DD26D /* POIDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80728A8E865002DD26D /* POIDetailView.swift */; };
-		FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80928A8E883002DD26D /* ListView.swift */; };
-		FFF1B80C28A8E89E002DD26D /* ListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80B28A8E89E002DD26D /* ListElementView.swift */; };
 		FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B80E28A8E8C4002DD26D /* MapView.swift */; };
-		FFF1B81228A8E8E9002DD26D /* MapComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81128A8E8E9002DD26D /* MapComponentView.swift */; };
+		FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81128A8E8E9002DD26D /* UIMapView.swift */; };
 		FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81728A8E925002DD26D /* DrawerContentView.swift */; };
-		FFF1B81A28A8E935002DD26D /* SearchBarComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81928A8E935002DD26D /* SearchBarComponentView.swift */; };
-		FFF1B81C28A8E955002DD26D /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81B28A8E955002DD26D /* MapModel.swift */; };
+		FFF1B81C28A8E955002DD26D /* MapSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81B28A8E955002DD26D /* MapSettings.swift */; };
 		FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B81D28A8E967002DD26D /* POIModel.swift */; };
-		FFF1B82128A8E9FC002DD26D /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFF1B82028A8E9FC002DD26D /* Drawer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +59,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF0D673528FD7D360029B459 /* Black-Kiwi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Black-Kiwi-Info.plist"; sourceTree = SOURCE_ROOT; };
+		FF120689290BE61A00C48DA6 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		FF39DD552913C16900BF6774 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPrivacySettingsView.swift; sourceTree = "<group>"; };
+		FF611B9428EC3509003DD3BA /* DrawerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerModel.swift; sourceTree = "<group>"; };
+		FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTypeButton.swift; sourceTree = "<group>"; };
+		FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationToggleButton.swift; sourceTree = "<group>"; };
+		FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModeButton.swift; sourceTree = "<group>"; };
+		FF9BB2DB28F4614200A16FCC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		FFA777D728F96D89004EEFD9 /* DataManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerModel.swift; sourceTree = "<group>"; };
+		FFB0208828EC7FE8004B9E4F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FFB0646E28C0B09400283CF3 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		FFBF672F28E9F19100C0A757 /* DrawerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerSettingsView.swift; sourceTree = "<group>"; };
+		FFC7BDBE28C72B7F003AA521 /* DrawerBaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerBaseComponent.swift; sourceTree = "<group>"; };
+		FFC7BDC028C72BB0003AA521 /* DrawerPOIInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPOIInfo.swift; sourceTree = "<group>"; };
+		FFD323A4290BDC2800BC9BCC /* DummyUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyUpdateModel.swift; sourceTree = "<group>"; };
+		FFD52B9F28F9C616003F1D0A /* testLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testLocation.swift; sourceTree = "<group>"; };
+		FFF0A57C291AB7D200ED2970 /* LoginManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManagerModel.swift; sourceTree = "<group>"; };
 		FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Black_Kiwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiApp.swift; sourceTree = "<group>"; };
 		FFF1B7DC28A8E799002DD26D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,14 +87,10 @@
 		FFF1B7F328A8E799002DD26D /* Black_KiwiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiUITests.swift; sourceTree = "<group>"; };
 		FFF1B7F528A8E799002DD26D /* Black_KiwiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FFF1B80428A8E829002DD26D /* WIPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIPView.swift; sourceTree = "<group>"; };
-		FFF1B80728A8E865002DD26D /* POIDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIDetailView.swift; sourceTree = "<group>"; };
-		FFF1B80928A8E883002DD26D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		FFF1B80B28A8E89E002DD26D /* ListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementView.swift; sourceTree = "<group>"; };
 		FFF1B80E28A8E8C4002DD26D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		FFF1B81128A8E8E9002DD26D /* MapComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponentView.swift; sourceTree = "<group>"; };
+		FFF1B81128A8E8E9002DD26D /* UIMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMapView.swift; sourceTree = "<group>"; };
 		FFF1B81728A8E925002DD26D /* DrawerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContentView.swift; sourceTree = "<group>"; };
-		FFF1B81928A8E935002DD26D /* SearchBarComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarComponentView.swift; sourceTree = "<group>"; };
-		FFF1B81B28A8E955002DD26D /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		FFF1B81B28A8E955002DD26D /* MapSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettings.swift; sourceTree = "<group>"; };
 		FFF1B81D28A8E967002DD26D /* POIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,8 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF217D2328BA6A4C001DE287 /* Map in Frameworks */,
-				FFF1B82128A8E9FC002DD26D /* Drawer in Frameworks */,
+				FFF0A57A291AB7B100ED2970 /* Alamofire in Frameworks */,
+				FF586A9628BF6B8C00755E5A /* PermissionsSwiftUILocation in Frameworks */,
 				FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +122,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF73FCAA28C5DEBA005E7EC5 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */,
+				FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */,
+				FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		FFF1B7CC28A8E797002DD26D = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +155,7 @@
 		FFF1B7D728A8E797002DD26D /* Black_Kiwi */ = {
 			isa = PBXGroup;
 			children = (
+				FF0D673528FD7D360029B459 /* Black-Kiwi-Info.plist */,
 				FFF1B80328A8E804002DD26D /* Models */,
 				FFF1B80228A8E7F3002DD26D /* Views */,
 				FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */,
@@ -156,8 +194,10 @@
 			isa = PBXGroup;
 			children = (
 				FFF1B80D28A8E8AF002DD26D /* MapView */,
-				FFF1B80628A8E855002DD26D /* ListView */,
 				FFF1B80428A8E829002DD26D /* WIPView.swift */,
+				FFB0208828EC7FE8004B9E4F /* MainView.swift */,
+				FFD52B9F28F9C616003F1D0A /* testLocation.swift */,
+				FF39DD552913C16900BF6774 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,20 +205,16 @@
 		FFF1B80328A8E804002DD26D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FFF1B81B28A8E955002DD26D /* MapModel.swift */,
+				FFF1B81B28A8E955002DD26D /* MapSettings.swift */,
 				FFF1B81D28A8E967002DD26D /* POIModel.swift */,
+				FFA777D728F96D89004EEFD9 /* DataManagerModel.swift */,
+				FFB0646E28C0B09400283CF3 /* LocationManager.swift */,
+				FF611B9428EC3509003DD3BA /* DrawerModel.swift */,
+				FFD323A4290BDC2800BC9BCC /* DummyUpdateModel.swift */,
+				FF120689290BE61A00C48DA6 /* AppSettings.swift */,
+				FFF0A57C291AB7D200ED2970 /* LoginManagerModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		FFF1B80628A8E855002DD26D /* ListView */ = {
-			isa = PBXGroup;
-			children = (
-				FFF1B80728A8E865002DD26D /* POIDetailView.swift */,
-				FFF1B80928A8E883002DD26D /* ListView.swift */,
-				FFF1B80B28A8E89E002DD26D /* ListElementView.swift */,
-			);
-			path = ListView;
 			sourceTree = "<group>";
 		};
 		FFF1B80D28A8E8AF002DD26D /* MapView */ = {
@@ -193,8 +229,9 @@
 		FFF1B81028A8E8DA002DD26D /* MapComponents */ = {
 			isa = PBXGroup;
 			children = (
+				FF73FCAA28C5DEBA005E7EC5 /* Buttons */,
 				FFF1B81328A8E8FB002DD26D /* DrawerComponents */,
-				FFF1B81128A8E8E9002DD26D /* MapComponentView.swift */,
+				FFF1B81128A8E8E9002DD26D /* UIMapView.swift */,
 			);
 			path = MapComponents;
 			sourceTree = "<group>";
@@ -203,7 +240,11 @@
 			isa = PBXGroup;
 			children = (
 				FFF1B81728A8E925002DD26D /* DrawerContentView.swift */,
-				FFF1B81928A8E935002DD26D /* SearchBarComponentView.swift */,
+				FFC7BDBE28C72B7F003AA521 /* DrawerBaseComponent.swift */,
+				FFC7BDC028C72BB0003AA521 /* DrawerPOIInfo.swift */,
+				FFBF672F28E9F19100C0A757 /* DrawerSettingsView.swift */,
+				FF9BB2DB28F4614200A16FCC /* SearchView.swift */,
+				FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */,
 			);
 			path = DrawerComponents;
 			sourceTree = "<group>";
@@ -225,9 +266,9 @@
 			);
 			name = Black_Kiwi;
 			packageProductDependencies = (
-				FFF1B82028A8E9FC002DD26D /* Drawer */,
 				FFCEB05028B3DAD500369F39 /* Drawer */,
-				FF217D2228BA6A4C001DE287 /* Map */,
+				FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */,
+				FFF0A579291AB7B100ED2970 /* Alamofire */,
 			);
 			productName = Black_Kiwi;
 			productReference = FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */;
@@ -302,9 +343,9 @@
 			);
 			mainGroup = FFF1B7CC28A8E797002DD26D;
 			packageReferences = (
-				FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
 				FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
-				FF217D2128BA6A4C001DE287 /* XCRemoteSwiftPackageReference "Map" */,
+				FF586A9428BF6B8C00755E5A /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
+				FFF0A578291AB7B100ED2970 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = FFF1B7D628A8E797002DD26D /* Products */;
 			projectDirPath = "";
@@ -348,17 +389,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFF1B80A28A8E883002DD26D /* ListView.swift in Sources */,
+				FFB0208928EC7FE8004B9E4F /* MainView.swift in Sources */,
+				FF5781DF291019FD002C2DA5 /* DrawerPrivacySettingsView.swift in Sources */,
+				FFC7BDBF28C72B7F003AA521 /* DrawerBaseComponent.swift in Sources */,
+				FFB0646F28C0B09400283CF3 /* LocationManager.swift in Sources */,
+				FF39DD562913C16900BF6774 /* LoginView.swift in Sources */,
 				FFF1B80F28A8E8C4002DD26D /* MapView.swift in Sources */,
-				FFF1B81A28A8E935002DD26D /* SearchBarComponentView.swift in Sources */,
+				FFBF673028E9F19200C0A757 /* DrawerSettingsView.swift in Sources */,
 				FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */,
-				FFF1B80C28A8E89E002DD26D /* ListElementView.swift in Sources */,
-				FFF1B80828A8E865002DD26D /* POIDetailView.swift in Sources */,
-				FFF1B81C28A8E955002DD26D /* MapModel.swift in Sources */,
+				FF9BB2DC28F4614200A16FCC /* SearchView.swift in Sources */,
+				FF73FCAE28C5DF4E005E7EC5 /* LocationToggleButton.swift in Sources */,
+				FF73FCAC28C5DED6005E7EC5 /* MapTypeButton.swift in Sources */,
+				FFC7BDC128C72BB0003AA521 /* DrawerPOIInfo.swift in Sources */,
+				FFF1B81C28A8E955002DD26D /* MapSettings.swift in Sources */,
 				FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */,
-				FFF1B81228A8E8E9002DD26D /* MapComponentView.swift in Sources */,
+				FF611B9528EC3509003DD3BA /* DrawerModel.swift in Sources */,
+				FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */,
+				FFD323A5290BDC2800BC9BCC /* DummyUpdateModel.swift in Sources */,
+				FFD52BA028F9C616003F1D0A /* testLocation.swift in Sources */,
 				FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */,
 				FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */,
+				FF12068A290BE61A00C48DA6 /* AppSettings.swift in Sources */,
+				FF73FCB028C5E0E7005E7EC5 /* LocationModeButton.swift in Sources */,
+				FFA777D828F96D89004EEFD9 /* DataManagerModel.swift in Sources */,
+				FFF0A57D291AB7D200ED2970 /* LoginManagerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,9 +574,12 @@
 				DEVELOPMENT_TEAM = DPA9YH62YZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Black-Kiwi-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Black Kiwi";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Location access is needed in order to show user location and provide nearby recommendations.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -549,9 +606,12 @@
 				DEVELOPMENT_TEAM = DPA9YH62YZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Black-Kiwi-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Black Kiwi";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Location access is needed in order to show user location and provide nearby recommendations.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -685,12 +745,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FF217D2128BA6A4C001DE287 /* XCRemoteSwiftPackageReference "Map" */ = {
+		FF586A9428BF6B8C00755E5A /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pauljohanneskraft/Map";
+			repositoryURL = "https://github.com/jevonmao/PermissionsSwiftUI";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
 			};
 		};
 		FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
@@ -701,31 +761,31 @@
 				kind = branch;
 			};
 		};
-		FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
+		FFF0A578291AB7B100ED2970 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/maustinstar/swiftui-drawer";
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FF217D2228BA6A4C001DE287 /* Map */ = {
+		FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FF217D2128BA6A4C001DE287 /* XCRemoteSwiftPackageReference "Map" */;
-			productName = Map;
+			package = FF586A9428BF6B8C00755E5A /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
+			productName = PermissionsSwiftUILocation;
 		};
 		FFCEB05028B3DAD500369F39 /* Drawer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FFCEB04F28B3DAD500369F39 /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
 			productName = Drawer;
 		};
-		FFF1B82028A8E9FC002DD26D /* Drawer */ = {
+		FFF0A579291AB7B100ED2970 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FFF1B81F28A8E9FC002DD26D /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
-			productName = Drawer;
+			package = FFF0A578291AB7B100ED2970 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

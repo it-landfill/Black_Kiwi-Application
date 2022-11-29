@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WIPView: View {
     
-    var newContent : String = ""
+    var newContent : String = "nothing"
     
     var body: some View {
         VStack {

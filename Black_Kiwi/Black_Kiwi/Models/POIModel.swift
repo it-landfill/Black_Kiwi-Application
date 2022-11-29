@@ -19,20 +19,19 @@ struct POIModel {
         let icon: String
     }
     
-    enum CategoryTypes {
-        case historical_building
-        case park
-        case theater
-        case museum
-        case department
+    enum CategoryTypes: String, Codable, CaseIterable {
+        case historical_building = "Historical Building"
+        case park = "Park"
+        case theater = "Theater"
+        case museum = "Museum"
+        case department = "Department"
     }
     
     class Item: NSObject, Identifiable, MKAnnotation {
-        let id: UUID
+        let id: UUID //TODO: Allineare con ID backend
         var title: String?
         var category: CategoryTypes
         var coordinate: CLLocationCoordinate2D
-        var distance: Float = 0.0
         var rank: Float
         
         init(
@@ -45,10 +44,22 @@ struct POIModel {
             self.title = name
             self.category = category
             self.coordinate = coordinate
-            self.distance = 0.0
             self.rank = rank
             
             super.init()
+        }
+        
+        func getDistance(position: CLLocation?) -> String {
+            if let position = position {
+                let dist: Double = position.distance(from: CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude))
+                if dist>1000 {
+                    return "\(String(format: "%.2f", dist/1000)) Km"
+                } else {
+                    return "\(String(format: "%.2f", dist)) m"
+                }
+            } else {
+                return "--- Km"
+            }
         }
     }
 }

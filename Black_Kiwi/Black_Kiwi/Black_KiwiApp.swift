@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct Black_KiwiApp: App {
+    @StateObject var appSettings: AppSettings = AppSettings()
+    
     var body: some Scene {
         WindowGroup {
-            MapView()
+            if appSettings.authenticationStatus != .authenticated {
+                LoginView()
+                    .environmentObject(appSettings)
+            } else {
+                MainView()
+                    .environmentObject(appSettings)
+            }
+            
+            //testLocation()
         }
     }
 }
