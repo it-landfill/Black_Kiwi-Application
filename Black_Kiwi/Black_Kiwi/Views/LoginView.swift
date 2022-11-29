@@ -68,10 +68,14 @@ struct LoginView: View {
                         .foregroundColor(.red)
                 }
                 Button(action: {
-                    let loginStatus = LoginManagerModel.loginUser(authenticationStatus: $authenticationStatus, errorMessage: $errorMessage, credentials: LoginManagerModel.LoginRequest(username: username, password: password, role: 1))
-                    print(loginStatus ?? "[ERROR] Login status is nil :(")
-                    if let loginStatus = loginStatus {
-                        appSettings.apiToken = loginStatus.token
+                    Task {
+                        let loginStatus = await LoginManagerModel.loginUser(authenticationStatus: $authenticationStatus, errorMessage: $errorMessage, credentials: LoginManagerModel.LoginRequest(username: username, password: password, role: 1))
+                        print(loginStatus ?? "[ERROR] Login status is nil :(")
+                        if let loginStatus = loginStatus {
+                            appSettings.apiToken = loginStatus.token
+                            print("API token:")
+                            print(appSettings.apiToken)
+                        }
                     }
                 }) {
                     switch (authenticationStatus) {

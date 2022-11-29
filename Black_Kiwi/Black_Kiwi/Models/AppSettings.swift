@@ -24,3 +24,8 @@ class AppSettings: ObservableObject {
         self.apiToken = apiToken
     }
 }
+
+extension AppSettings {
+    //static var apiURL: String = "http://casadiale.noip.me:62950"
+    static var apiURL: String = "http://127.0.0.1:8080"
+}

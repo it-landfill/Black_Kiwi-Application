@@ -11,7 +11,7 @@ import Drawer
 struct MainView: View {
     
     @StateObject var locationManager: LocationManager = LocationManager()
-	@StateObject var appSettings: AppSettings = AppSettings()
+    // App settings is declared in Black_KiwiApp
     
     @State private var restHeights = DrawerModel.defaultHeights
     @State private var selectedPOI: POIModel.Item? = nil
@@ -30,7 +30,6 @@ struct MainView: View {
             .padding(.leading,10)
         }
         .environmentObject(locationManager)
-        .environmentObject(appSettings)
     }
 }
 

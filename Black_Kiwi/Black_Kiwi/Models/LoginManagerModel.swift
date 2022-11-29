@@ -31,36 +31,39 @@ struct LoginManagerModel {
         case authenticated
     }
     
-    private static let baseURL = "http://casadiale.noip.me:62950"
-    //private static let baseURL = "http://127.0.0.1:8080"
-    
-    static func loginUser(authenticationStatus: Binding<AuthenticationStatus>, errorMessage: Binding<String>, credentials: LoginRequest) -> LoginResponse? {
+    static func loginUser(authenticationStatus: Binding<AuthenticationStatus>, errorMessage: Binding<String>, credentials: LoginRequest) async -> LoginResponse? {
+        let endpoint = "\(AppSettings.apiURL)/login"
         
         print(credentials)
         var userData: LoginResponse?;
         authenticationStatus.wrappedValue = .inProgress
         
-        AF.request("\(baseURL)/login", method: .post, parameters: credentials, encoder: URLEncodedFormParameterEncoder(destination: .httpBody)).responseDecodable(of: LoginResponse.self) { response in
-            
-            if (response.error != nil) {
-                print("Error in login")
-                debugPrint(response)
-                if (response.response?.statusCode == 401) {
-                    errorMessage.wrappedValue = "Wrong Username or Passowrd"
-                }
-                authenticationStatus.wrappedValue = .failed
-                return
-            } else {
-                print(response.value ?? "Error pronting response")
-                errorMessage.wrappedValue = ""
-                authenticationStatus.wrappedValue = .authenticated
-                userData = response.value ?? nil
+        let dataTask = AF.request(endpoint, method: .post, parameters: credentials, encoder: URLEncodedFormParameterEncoder(destination: .httpBody)).serializingDecodable(LoginResponse.self)
+        
+        let response = await dataTask.response
+        
+        if (response.error != nil) {
+            print("Error in login")
+            debugPrint(response)
+            if (response.response?.statusCode == 401) {
+                errorMessage.wrappedValue = "Wrong Username or Passowrd"
             }
-
+            authenticationStatus.wrappedValue = .failed
+            return nil
+        } else {
+            print(response.value ?? "Error pronting response")
+            errorMessage.wrappedValue = ""
+            authenticationStatus.wrappedValue = .authenticated
+            userData = response.value ?? nil
         }
         
-        return userData
         
+        return userData
+    }
+    
+    static func logoutUser(authToken: String) -> Bool {
+        print("Requesting logout for token: \(authToken)")
+        return true
     }
     
 }
