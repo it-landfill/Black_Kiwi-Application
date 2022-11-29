@@ -19,8 +19,6 @@ struct LoginView: View {
     @State private var editingMode: Bool = false
     @State private var errorMessage: String = ""
     
-    @Binding var authenticationStatus: LoginManagerModel.AuthenticationStatus
-    
     @EnvironmentObject private var appSettings: AppSettings
     
     var body: some View {
@@ -62,14 +60,14 @@ struct LoginView: View {
                     .padding(.bottom, 20)
                 
                 
-                if authenticationStatus == .failed && errorMessage != "" {
+                if appSettings.authenticationStatus == .failed && errorMessage != "" {
                     Text(errorMessage)
                         .offset(y: -10)
                         .foregroundColor(.red)
                 }
                 Button(action: {
                     Task {
-                        let loginStatus = await LoginManagerModel.loginUser(authenticationStatus: $authenticationStatus, errorMessage: $errorMessage, credentials: LoginManagerModel.LoginRequest(username: username, password: password, role: 1))
+                        let loginStatus = await LoginManagerModel.loginUser(authenticationStatus: $appSettings.authenticationStatus, errorMessage: $errorMessage, credentials: LoginManagerModel.LoginRequest(username: username, password: password, role: 1))
                         print(loginStatus ?? "[ERROR] Login status is nil :(")
                         if let loginStatus = loginStatus {
                             appSettings.apiToken = loginStatus.token
@@ -78,7 +76,7 @@ struct LoginView: View {
                         }
                     }
                 }) {
-                    switch (authenticationStatus) {
+                    switch (appSettings.authenticationStatus) {
                     case .notAuthenticated, .guest:
                         Text("LOGIN")
                             .font(.headline)
@@ -112,7 +110,7 @@ struct LoginView: View {
                 }
             }
             .padding()
-            if authenticationStatus == .authenticated {
+            if appSettings.authenticationStatus == .authenticated {
                 // TODO: This is useless if when authenticated change screen
                 withAnimation(.default) {
                     Text("Login succeeded!")
@@ -130,6 +128,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(authenticationStatus: .constant(LoginManagerModel.AuthenticationStatus.notAuthenticated))
+        LoginView()
     }
 }

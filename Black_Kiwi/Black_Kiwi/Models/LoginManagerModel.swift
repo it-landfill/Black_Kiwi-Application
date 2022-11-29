@@ -36,7 +36,9 @@ struct LoginManagerModel {
         
         print(credentials)
         var userData: LoginResponse?;
-        authenticationStatus.wrappedValue = .inProgress
+        DispatchQueue.main.async {
+            authenticationStatus.wrappedValue = .inProgress
+        }
         
         let dataTask = AF.request(endpoint, method: .post, parameters: credentials, encoder: URLEncodedFormParameterEncoder(destination: .httpBody)).serializingDecodable(LoginResponse.self)
         
@@ -48,22 +50,42 @@ struct LoginManagerModel {
             if (response.response?.statusCode == 401) {
                 errorMessage.wrappedValue = "Wrong Username or Passowrd"
             }
-            authenticationStatus.wrappedValue = .failed
+            DispatchQueue.main.async {
+                authenticationStatus.wrappedValue = .failed
+            }
             return nil
-        } else {
-            print(response.value ?? "Error pronting response")
-            errorMessage.wrappedValue = ""
-            authenticationStatus.wrappedValue = .authenticated
-            userData = response.value ?? nil
         }
+        print(response.value ?? "Error pronting response")
+        errorMessage.wrappedValue = ""
+        
+        DispatchQueue.main.async {
+            authenticationStatus.wrappedValue = .authenticated
+        }
+        
+        userData = response.value ?? nil
         
         
         return userData
     }
     
-    static func logoutUser(authToken: String) -> Bool {
+    static func logoutUser(authToken: String) async -> Bool {
         print("Requesting logout for token: \(authToken)")
-        return true
+        let endpoint = "\(AppSettings.apiURL)/logout"
+        
+        let headers: HTTPHeaders = [
+            "X-API-KEY": authToken
+        ]
+        
+        let logoutTask = AF.request(endpoint, method: .post, headers: headers).serializingString()
+        let response = await logoutTask.response
+        
+        if (response.error != nil) {
+            print("Error in logout")
+            debugPrint(response)
+            return false
+        } else {
+            return true
+        }
     }
     
 }

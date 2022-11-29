@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DrawerSettingsView: View {
     
+    @EnvironmentObject private var appSettings: AppSettings
+    
     // TODO: Set default values for perturbation options
     // TODO: Apply button
     @Binding var openSettings: Bool
@@ -60,6 +62,23 @@ struct DrawerSettingsView: View {
                 List{
                     NavigationLink(destination: DrawerPrivacySettingsView()) {
                         Text("Privacy Settings")
+                    }
+                    Section("Account Settings"){
+                        Button(action: {
+                            Task {
+                                let result = await LoginManagerModel.logoutUser(authToken: appSettings.apiToken)
+                                if result {
+                                    print("Logout success")
+                                    appSettings.authenticationStatus = .notAuthenticated
+                                } else {
+                                    print("Logout failed")
+                                }
+                            }
+                        }, label: {
+                            Text("Logout")
+                                .foregroundColor(.red)
+                            
+                        })
                     }
                 }
             }

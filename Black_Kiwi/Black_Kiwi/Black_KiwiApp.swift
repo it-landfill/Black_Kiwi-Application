@@ -9,13 +9,12 @@ import SwiftUI
 
 @main
 struct Black_KiwiApp: App {
-    @State private var authenticationStatus = LoginManagerModel.AuthenticationStatus.notAuthenticated
     @StateObject var appSettings: AppSettings = AppSettings()
     
     var body: some Scene {
         WindowGroup {
-            if authenticationStatus != .authenticated {
-                LoginView(authenticationStatus: $authenticationStatus)
+            if appSettings.authenticationStatus != .authenticated {
+                LoginView()
                     .environmentObject(appSettings)
             } else {
                 MainView()
