@@ -39,7 +39,6 @@ struct MapView: View {
                 HStack {
                     Spacer()
                     VStack {
-                        MapTypeButton()
                         LocationToggleButton(locationStatus: $locationStatus, showPermissionPopup: $showPermissionPopup)
                         if (locationStatus) {
                             LocationModeButton()

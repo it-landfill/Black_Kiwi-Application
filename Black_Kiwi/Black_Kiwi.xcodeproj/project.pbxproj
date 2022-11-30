@@ -12,7 +12,6 @@
 		FF5781DF291019FD002C2DA5 /* DrawerPrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */; };
 		FF586A9628BF6B8C00755E5A /* PermissionsSwiftUILocation in Frameworks */ = {isa = PBXBuildFile; productRef = FF586A9528BF6B8C00755E5A /* PermissionsSwiftUILocation */; };
 		FF611B9528EC3509003DD3BA /* DrawerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF611B9428EC3509003DD3BA /* DrawerModel.swift */; };
-		FF73FCAC28C5DED6005E7EC5 /* MapTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */; };
 		FF73FCAE28C5DF4E005E7EC5 /* LocationToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */; };
 		FF73FCB028C5E0E7005E7EC5 /* LocationModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */; };
 		FF9BB2DC28F4614200A16FCC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BB2DB28F4614200A16FCC /* SearchView.swift */; };
@@ -64,7 +63,6 @@
 		FF39DD552913C16900BF6774 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPrivacySettingsView.swift; sourceTree = "<group>"; };
 		FF611B9428EC3509003DD3BA /* DrawerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerModel.swift; sourceTree = "<group>"; };
-		FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTypeButton.swift; sourceTree = "<group>"; };
 		FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationToggleButton.swift; sourceTree = "<group>"; };
 		FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModeButton.swift; sourceTree = "<group>"; };
 		FF9BB2DB28F4614200A16FCC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 		FF73FCAA28C5DEBA005E7EC5 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				FF73FCAB28C5DED6005E7EC5 /* MapTypeButton.swift */,
 				FF73FCAD28C5DF4E005E7EC5 /* LocationToggleButton.swift */,
 				FF73FCAF28C5E0E7005E7EC5 /* LocationModeButton.swift */,
 			);
@@ -399,7 +396,6 @@
 				FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */,
 				FF9BB2DC28F4614200A16FCC /* SearchView.swift in Sources */,
 				FF73FCAE28C5DF4E005E7EC5 /* LocationToggleButton.swift in Sources */,
-				FF73FCAC28C5DED6005E7EC5 /* MapTypeButton.swift in Sources */,
 				FFC7BDC128C72BB0003AA521 /* DrawerPOIInfo.swift in Sources */,
 				FFF1B81C28A8E955002DD26D /* MapSettings.swift in Sources */,
 				FFF1B81828A8E925002DD26D /* DrawerContentView.swift in Sources */,
