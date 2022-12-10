@@ -24,7 +24,6 @@
 		FFC7BDC128C72BB0003AA521 /* DrawerPOIInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7BDC028C72BB0003AA521 /* DrawerPOIInfo.swift */; };
 		FFCEB05128B3DAD500369F39 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = FFCEB05028B3DAD500369F39 /* Drawer */; };
 		FFD323A5290BDC2800BC9BCC /* DummyUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD323A4290BDC2800BC9BCC /* DummyUpdateModel.swift */; };
-		FFD52BA028F9C616003F1D0A /* testLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD52B9F28F9C616003F1D0A /* testLocation.swift */; };
 		FFF0A57A291AB7B100ED2970 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FFF0A579291AB7B100ED2970 /* Alamofire */; };
 		FFF0A57D291AB7D200ED2970 /* LoginManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF0A57C291AB7D200ED2970 /* LoginManagerModel.swift */; };
 		FFF1B7D928A8E797002DD26D /* Black_KiwiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */; };
@@ -75,7 +74,6 @@
 		FFC7BDBE28C72B7F003AA521 /* DrawerBaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerBaseComponent.swift; sourceTree = "<group>"; };
 		FFC7BDC028C72BB0003AA521 /* DrawerPOIInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPOIInfo.swift; sourceTree = "<group>"; };
 		FFD323A4290BDC2800BC9BCC /* DummyUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyUpdateModel.swift; sourceTree = "<group>"; };
-		FFD52B9F28F9C616003F1D0A /* testLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testLocation.swift; sourceTree = "<group>"; };
 		FFF0A57C291AB7D200ED2970 /* LoginManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManagerModel.swift; sourceTree = "<group>"; };
 		FFF1B7D528A8E797002DD26D /* Black_Kiwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Black_Kiwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF1B7D828A8E797002DD26D /* Black_KiwiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Black_KiwiApp.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				FFF1B80D28A8E8AF002DD26D /* MapView */,
 				FFF1B80428A8E829002DD26D /* WIPView.swift */,
 				FFB0208828EC7FE8004B9E4F /* MainView.swift */,
-				FFD52B9F28F9C616003F1D0A /* testLocation.swift */,
 				FF39DD552913C16900BF6774 /* LoginView.swift */,
 			);
 			path = Views;
@@ -405,7 +402,6 @@
 				FF611B9528EC3509003DD3BA /* DrawerModel.swift in Sources */,
 				FFF1B81228A8E8E9002DD26D /* UIMapView.swift in Sources */,
 				FFD323A5290BDC2800BC9BCC /* DummyUpdateModel.swift in Sources */,
-				FFD52BA028F9C616003F1D0A /* testLocation.swift in Sources */,
 				FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */,
 				FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */,
 				AB40972F29376C2B0025245E /* TestPrivacyLocation.swift in Sources */,
