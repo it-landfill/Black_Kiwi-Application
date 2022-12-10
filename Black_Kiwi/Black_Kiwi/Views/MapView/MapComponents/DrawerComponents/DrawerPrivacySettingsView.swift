@@ -25,7 +25,7 @@ struct DrawerPrivacySettingsView: View {
     @State private var min: Double = 0
     @State private var max: Double = 0
     @State private var mode: Double = 0
-    
+        
     @EnvironmentObject private var appSettings: AppSettings
     
     var body: some View {
@@ -113,13 +113,17 @@ struct DrawerPrivacySettingsView: View {
                         }
                     }
                 }
+                NavigationLink(destination: {
+                    TestPrivacyLocation(numberOfDummies: $numberOfDummies, perturbation: $perturbation, radius: $radius, lambda: $lambda, mean: $mean, standardDeviation: $standardDeviation, min: $min, max: $max, mode: $mode)
+                }, label: {
+                    Text("Test Configuration")
+                })
                 Button(action: {
                     let dummyUpdateModel = DummyUpdateModel(radius: radius, numberOfDummies: Int(numberOfDummies), noiseDistribution: perturbation, lambda: lambda, min: min, max: max, mode: mode, mean: mean, standard_deviation: standardDeviation)
                     appSettings.locationPrivacyModel = dummyUpdateModel
                 }, label: {
                     Text("Apply")
                 })
-                //TODO: View sample location button
             }
         }
         Spacer()
@@ -127,23 +131,23 @@ struct DrawerPrivacySettingsView: View {
                 let dummyUpdateModel = appSettings.locationPrivacyModel
                 
                 radius = dummyUpdateModel.radius
-				numberOfDummies = Float(dummyUpdateModel.numberOfDummies)
-				
-				perturbation = dummyUpdateModel.noiseDistribution
-				lambda = dummyUpdateModel.lambda
-				min = dummyUpdateModel.min
-				max = dummyUpdateModel.max
-				mode = dummyUpdateModel.mode
-				mean = dummyUpdateModel.mean
-				standardDeviation = dummyUpdateModel.standard_deviation
-
-				if (numberOfDummies == 0 && perturbation == .none) {
-					selectedPrivacyModel = 0
-				} else if (numberOfDummies == 0 && perturbation != .none) {
-					selectedPrivacyModel = 1
-				} else {
-					selectedPrivacyModel = 2
-				}
+                numberOfDummies = Float(dummyUpdateModel.numberOfDummies)
+                
+                perturbation = dummyUpdateModel.noiseDistribution
+                lambda = dummyUpdateModel.lambda
+                min = dummyUpdateModel.min
+                max = dummyUpdateModel.max
+                mode = dummyUpdateModel.mode
+                mean = dummyUpdateModel.mean
+                standardDeviation = dummyUpdateModel.standard_deviation
+                
+                if (numberOfDummies == 0 && perturbation == .none) {
+                    selectedPrivacyModel = 0
+                } else if (numberOfDummies == 0 && perturbation != .none) {
+                    selectedPrivacyModel = 1
+                } else {
+                    selectedPrivacyModel = 2
+                }
             })
     }
 }

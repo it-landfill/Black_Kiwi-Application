@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB40972F29376C2B0025245E /* TestPrivacyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40972E29376C2B0025245E /* TestPrivacyLocation.swift */; };
 		FF12068A290BE61A00C48DA6 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF120689290BE61A00C48DA6 /* AppSettings.swift */; };
 		FF39DD562913C16900BF6774 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF39DD552913C16900BF6774 /* LoginView.swift */; };
 		FF5781DF291019FD002C2DA5 /* DrawerPrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB40972E29376C2B0025245E /* TestPrivacyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPrivacyLocation.swift; sourceTree = "<group>"; };
 		FF0D673528FD7D360029B459 /* Black-Kiwi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Black-Kiwi-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FF120689290BE61A00C48DA6 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		FF39DD552913C16900BF6774 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				FFBF672F28E9F19100C0A757 /* DrawerSettingsView.swift */,
 				FF9BB2DB28F4614200A16FCC /* SearchView.swift */,
 				FF5781DE291019FD002C2DA5 /* DrawerPrivacySettingsView.swift */,
+				AB40972E29376C2B0025245E /* TestPrivacyLocation.swift */,
 			);
 			path = DrawerComponents;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				FFD52BA028F9C616003F1D0A /* testLocation.swift in Sources */,
 				FFF1B81E28A8E967002DD26D /* POIModel.swift in Sources */,
 				FFF1B80528A8E829002DD26D /* WIPView.swift in Sources */,
+				AB40972F29376C2B0025245E /* TestPrivacyLocation.swift in Sources */,
 				FF12068A290BE61A00C48DA6 /* AppSettings.swift in Sources */,
 				FF73FCB028C5E0E7005E7EC5 /* LocationModeButton.swift in Sources */,
 				FFA777D828F96D89004EEFD9 /* DataManagerModel.swift in Sources */,
