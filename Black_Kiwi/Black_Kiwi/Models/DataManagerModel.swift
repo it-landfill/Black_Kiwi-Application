@@ -51,7 +51,7 @@ class DataManager {
             category = .department
         }
         
-        return POIModel.Item(name: response.name, category: category, coordinate: CLLocationCoordinate2D(latitude: response.coord.latitude, longitude: response.coord.longitude), rank: 1)
+        return POIModel.Item(name: response.name, category: category, coordinate: CLLocationCoordinate2D(latitude: response.coord.latitude, longitude: response.coord.longitude), rank: response.rank)
     }
     
     static func getReccomendations(apiToken: String, dummyPositions: [CLLocationCoordinate2D], truePosition: CLLocationCoordinate2D, category: POIModel.CategoryTypes?, minRank: Float, limit: Int?) async -> [POIModel.Item]? {

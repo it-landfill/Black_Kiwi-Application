@@ -36,7 +36,7 @@ struct DrawerPOIInfo: View {
                 VStack{
                     Text("Rank")
                         .bold()
-                    Text("\(poi?.rank ?? 0, specifier: "%.1f")")
+                    Text("\(poi?.rank ?? 0, specifier: "%.0f")")
                 }
                 Spacer()
                 VStack{
