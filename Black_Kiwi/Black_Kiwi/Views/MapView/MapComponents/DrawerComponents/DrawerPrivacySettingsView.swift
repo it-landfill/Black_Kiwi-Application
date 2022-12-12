@@ -114,11 +114,15 @@ struct DrawerPrivacySettingsView: View {
                     }
                 }
                 NavigationLink(destination: {
-                    TestPrivacyLocation(numberOfDummies: $numberOfDummies, perturbation: $perturbation, radius: $radius, lambda: $lambda, mean: $mean, standardDeviation: $standardDeviation, min: $min, max: $max, mode: $mode)
+                    TestPrivacyLocation(selectedPrivacyModel: $selectedPrivacyModel, numberOfDummies: $numberOfDummies, perturbation: $perturbation, radius: $radius, lambda: $lambda, mean: $mean, standardDeviation: $standardDeviation, min: $min, max: $max, mode: $mode)
                 }, label: {
                     Text("Test Configuration")
                 })
                 Button(action: {
+                    if selectedPrivacyModel == 1 {
+                        numberOfDummies = 1
+                    }
+                    
                     let dummyUpdateModel = DummyUpdateModel(radius: radius, numberOfDummies: Int(numberOfDummies), noiseDistribution: perturbation, lambda: lambda, min: min, max: max, mode: mode, mean: mean, standard_deviation: standardDeviation)
                     appSettings.locationPrivacyModel = dummyUpdateModel
                 }, label: {
@@ -141,9 +145,9 @@ struct DrawerPrivacySettingsView: View {
                 mean = dummyUpdateModel.mean
                 standardDeviation = dummyUpdateModel.standard_deviation
                 
-                if (numberOfDummies == 0 && perturbation == .none) {
+                if (perturbation == .none) {
                     selectedPrivacyModel = 0
-                } else if (numberOfDummies == 0 && perturbation != .none) {
+                } else if (numberOfDummies == 1) {
                     selectedPrivacyModel = 1
                 } else {
                     selectedPrivacyModel = 2

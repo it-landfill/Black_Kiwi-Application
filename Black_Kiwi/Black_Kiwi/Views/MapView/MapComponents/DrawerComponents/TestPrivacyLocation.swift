@@ -15,6 +15,7 @@ struct TestPrivacyLocation: View {
     @State private var annotations: [Location] = []
     @State private var locationManager: LocationManager = LocationManager()
     
+    @Binding var selectedPrivacyModel: Int
     @Binding var numberOfDummies: Float
     @Binding var perturbation: DummyUpdateModel.NoiseDistribution
     @Binding var radius: Double
@@ -36,6 +37,10 @@ struct TestPrivacyLocation: View {
             MapMarker(coordinate: location.coordinate)
         }
         .onAppear(perform: {
+            if selectedPrivacyModel == 1 {
+                numberOfDummies = 1
+            }
+            
             let dummyUpdateModel = DummyUpdateModel(radius: radius, numberOfDummies: Int(numberOfDummies), noiseDistribution: perturbation, lambda: lambda, min: min, max: max, mode: mode, mean: mean, standard_deviation: standardDeviation)
             if let curLocs = locationManager.getCoordinatesWithNoise(dummyUpdateModel: dummyUpdateModel) {
                 curLocs.forEach { loc in
@@ -50,7 +55,7 @@ struct TestPrivacyLocation: View {
 
 struct TestPrivacyLocation_Previews: PreviewProvider {
     static var previews: some View {
-        TestPrivacyLocation(numberOfDummies: .constant(5), perturbation: .constant(.uniform), radius: .constant(3), lambda: .constant(0), mean: .constant(0), standardDeviation: .constant(0), min: .constant(0), max: .constant(0), mode: .constant(0))
+        TestPrivacyLocation(selectedPrivacyModel: .constant(1), numberOfDummies: .constant(5), perturbation: .constant(.uniform), radius: .constant(3), lambda: .constant(0), mean: .constant(0), standardDeviation: .constant(0), min: .constant(0), max: .constant(0), mode: .constant(0))
     }
 }
 

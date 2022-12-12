@@ -39,6 +39,7 @@ class DummyUpdateModel: Codable {
     
     // No location distorsion constructor
     init() {
+        //TODO: CRESP SETTA QUI I PARAMETRI DEFAULT
         self.noiseDistribution = .none
         self.radius = 0.1
         self.numberOfDummies = 2 // Exclude location perturbation and no perturbation
