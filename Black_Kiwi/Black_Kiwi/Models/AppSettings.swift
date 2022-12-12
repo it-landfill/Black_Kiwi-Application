@@ -9,19 +9,19 @@ import Foundation
 import SwiftUI
 
 class AppSettings: ObservableObject {
-	var locationPrivacyModel: DummyUpdateModel
+    var locationPrivacyModel: DummyUpdateModel
     var apiToken: String
     @Published var authenticationStatus: LoginManagerModel.AuthenticationStatus
     
     init() {
         self.locationPrivacyModel = DummyUpdateModel()
         self.apiToken = ""
-        self.authenticationStatus = .notAuthenticated
+        self.authenticationStatus = (ProcessInfo.processInfo.environment["noauth"] != nil ? .authenticated : .notAuthenticated)
     }
     init(locationPrivacyModel: DummyUpdateModel) {
         self.locationPrivacyModel = locationPrivacyModel
         self.apiToken = ""
-        self.authenticationStatus = .notAuthenticated
+        self.authenticationStatus = (ProcessInfo.processInfo.environment["noauth"] != nil ? .authenticated : .notAuthenticated)
     }
     init(locationPrivacyModel: DummyUpdateModel, apiToken: String) {
         self.locationPrivacyModel = locationPrivacyModel
@@ -31,6 +31,5 @@ class AppSettings: ObservableObject {
 }
 
 extension AppSettings {
-    //static var apiURL: String = "http://casadiale.noip.me:62950"
-    static var apiURL: String = "http://127.0.0.1:8080"
+    static var apiURL: String = (ProcessInfo.processInfo.environment["localhost"] != nil ? "http://127.0.0.1:8080" : "http://casadiale.noip.me:62950")
 }
