@@ -12,7 +12,7 @@ struct DrawerModel {
     enum heights: CGFloat {
         case peek = -5
         case low = 50
-        case mid = 300
+        case mid = 100
         case high = 600
     }
     

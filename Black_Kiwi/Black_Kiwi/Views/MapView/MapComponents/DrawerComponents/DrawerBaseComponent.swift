@@ -40,10 +40,9 @@ struct DrawerBaseComponent: View {
                         .padding(.trailing, 5)
                 }
             }
-            WIPView(newContent: "Base drawer tab")
         }
         .task {
-            await DrawerModel.setHeight(restHeights: $restHeights, height: DrawerModel.heights.low)
+            await DrawerModel.setHeight(restHeights: $restHeights, height: DrawerModel.heights.low, availHeights: [DrawerModel.heights.peek.rawValue, DrawerModel.heights.low.rawValue])
         }
         .sheet(isPresented: $showingSearchSheet, content: {
             if #available(iOS 16.0, *) {
@@ -54,7 +53,6 @@ struct DrawerBaseComponent: View {
                 SearchView(showSheet: $showingSearchSheet)
             }
         })
-        
     }
 }
 
