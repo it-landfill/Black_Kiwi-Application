@@ -31,5 +31,5 @@ class AppSettings: ObservableObject {
 }
 
 extension AppSettings {
-    static var apiURL: String = (ProcessInfo.processInfo.environment["localhost"] != nil ? "http://127.0.0.1:8080" : "http://casadiale.noip.me:62950")
+    static var apiURL: String = (ProcessInfo.processInfo.environment["host"] != nil ? ProcessInfo.processInfo.environment["host"]! : "http://casadiale.noip.me:62950")
 }
