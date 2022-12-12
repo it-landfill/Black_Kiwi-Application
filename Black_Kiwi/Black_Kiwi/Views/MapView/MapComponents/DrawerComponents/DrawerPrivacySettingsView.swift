@@ -59,7 +59,7 @@ struct DrawerPrivacySettingsView: View {
                     Section("\(perturbation.rawValue) perturbation options"){
                         HStack {
                             Text("Radius ")
-                            Slider(value: $radius, in: 0.1...2, step: 0.1)
+                            Slider(value: $radius, in: 0.1...4.1, step: 0.1)
                             if (radius<1) {
                                 Text(String(format: "%.0f m", radius*1000))
                             } else {

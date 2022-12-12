@@ -41,14 +41,14 @@ class DummyUpdateModel: Codable {
     init() {
         //TODO: CRESP SETTA QUI I PARAMETRI DEFAULT
         self.noiseDistribution = .none
-        self.radius = 0.1
+        self.radius = 2
         self.numberOfDummies = 2 // Exclude location perturbation and no perturbation
-        self.lambda = 0.5
+        self.lambda = 5
         self.min = 0
-        self.max = 0
-        self.mode = 0
-        self.mean = 0
-        self.standard_deviation = 0.1
+        self.max = 4
+        self.mode = 2
+        self.mean = 1
+        self.standard_deviation = 1
     }
     
     // Uniform distribution constructor
